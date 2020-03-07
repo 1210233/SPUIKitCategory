@@ -38,9 +38,9 @@
 
 /* Begin PBXFileReference section */
 		01E9E43AE8F9DD8A2942437D /* Pods_SPUIKitCategory_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPUIKitCategory_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		188AE2B0A3FC024BD67E6F8D /* SPUIKitCategory.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SPUIKitCategory.podspec; path = ../SPUIKitCategory.podspec; sourceTree = "<group>"; };
+		188AE2B0A3FC024BD67E6F8D /* SPUIKitCategory.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SPUIKitCategory.podspec; path = ../SPUIKitCategory.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		520B72E91122E9FFAEBFFE2F /* Pods_SPUIKitCategory_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPUIKitCategory_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A35827E6D8AF7293F07A4BF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		5A35827E6D8AF7293F07A4BF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* SPUIKitCategory_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPUIKitCategory_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,7 +65,7 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE071218141C0DE0271F8B36 /* Pods-SPUIKitCategory_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Example.release.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Example/Pods-SPUIKitCategory_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B4B592644AB93103691D0B8D /* Pods-SPUIKitCategory_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Tests.release.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Tests/Pods-SPUIKitCategory_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		DBD471F26507424F057F52A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		DBD471F26507424F057F52A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EE1129E94982209A6C6E399F /* Pods-SPUIKitCategory_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Example.debug.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Example/Pods-SPUIKitCategory_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +193,6 @@
 				73DE69C730854814C6929D2F /* Pods-SPUIKitCategory_Tests.debug.xcconfig */,
 				B4B592644AB93103691D0B8D /* Pods-SPUIKitCategory_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +257,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

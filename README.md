@@ -22,7 +22,7 @@ pod 'SPUIKitCategory'
 
 ## Author
 
-1210233, 1210233@163.com
+LSP, 1210233@163.com
 
 ## License
 
