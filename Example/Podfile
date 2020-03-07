@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'SPUIKitCategory_Example' do
-  pod 'SPUIKitCategory', :path => 'https://gitee.com/1210233/SPUIKitCategory.git'
+  pod 'SPUIKitCategory', :path => '../'
 
   target 'SPUIKitCategory_Tests' do
     inherit! :search_paths
