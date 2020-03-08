@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SPUIKitCategory'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
   s.description      = <<-DESC
     SPUIKitCategory是UIKit的分类 的集合
@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'SPUIViewCategory', :git => 'https://gitee.com/1210233/SPUIViewCategory.git'
   
 #  s.weak_framework = 'MessageUI'
 

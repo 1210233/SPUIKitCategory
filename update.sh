@@ -7,13 +7,25 @@ privateSpecName='privateSpecs'
 
 tags=(`git tag`)
 
-if echo "${tags[@]}" | grep -w $tag_num &>/dev/null; then
-    echo "tag $tag_num exists."
+echo '=================> UPDATE START >>>'
+
+if [ ${#tags[@]} == 0 ]
+then
+    echo 'git has no tags.'
+    git tag -m "$tag_num" $tag_num
+    git push origin $tag_num
+    echo "git has create the new tag $tag_num."
 else
-#    git tag $tag_num -m $tag_num
-#    git push origin $tag_num
-    last_tag=${tags[@]: -1}
-    echo "git has create the new tag $tag_num, and last tag is $last_tag."
+    if echo "${tags[@]}" | grep -w $tag_num &>/dev/null; then
+        echo "tag $tag_num exists."
+    else
+        git tag -m "$tag_num" $tag_num
+        git push origin $tag_num
+        
+        last_tag=${tags[@]: -1}
+        
+        echo "git has create the new tag $tag_num, and last tag is $last_tag."
+    fi
 fi
 
 
@@ -40,34 +52,29 @@ do
         
         
         # Pod repo push start.
-        echo "now excuting 'pod repo push $privateSpecName SPUIKitCategory.podspec --allow-warnings'..."
-        rr=$(pod repo push privateSpecs SPUIKitCategory.podspec --allow-warnings)
+        echo "now excuting 'pod repo push $privateSpecName $file --allow-warnings'..."
+        rr=$(pod repo push privateSpecs $file --allow-warnings)
 
-        # success_flag += "Adding the spec to the `$privateSpecName"' repo"
-#        success_flag= "Pushing the "
-#        echo $success_flag
         if [[ $rr =~ "Adding the spec to the " &&  $rr =~ "Pushing the " ]]
         then
             echo "pod push spec to '$privateSpecName' success."
             
 #            echo "now excuting 'pod repo update $privateSpecName'..."
 #            pod repo update $privateSpecName
+            echo '>>>>>>>>>>>>>>>>=== UPDATE END ='
         else
-            echo "pod push spec to '$privateSpecName' faild."
+            echo $rr
+#            echo "pod push spec to '$privateSpecName' faild."
         fi
         # Pod repo push end.
         
         
     else
-        echo "pod spec lint faild."
+        echo $rr
     fi
     # Pod spec lint end
 
 ##    for repo in `pod repo list | grep -Ev '^$|^-'`
 ##    do
 ##    done
-
 done
-
-
-##
