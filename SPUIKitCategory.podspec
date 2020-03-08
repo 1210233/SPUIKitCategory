@@ -8,17 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SPUIKitCategory'
-  s.version          = '1.0.2'
+  s.version          = '1.0.0'
   s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
-    SPUIKitCategory是UIKit的分类的集合
+    SPUIKitCategory是UIKit的分类 的集合
                        DESC
 
   s.homepage         = 'https://gitee.com/1210233'
@@ -27,24 +20,24 @@ Pod::Spec.new do |s|
   s.author           = { '1210233' => '1210233@163.com' }
   s.source           = { :git => 'https://gitee.com/1210233/SPUIKitCategory.git', :tag => s.version.to_s }
   
+  
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
+  
   #//仅支持ios
   s.platform = :ios
-  
   s.ios.deployment_target = '8.0'
+  
 
-  pch_SP = <<-EOS
+  s.prefix_header_contents = <<-EOS
   #ifdef __OBJC__
   #import "SPUIKitCategory.h"    //SGExtension包含了所有头文件
   #endif
   EOS
   
   
-  s.prefix_header_contents = pch_SP
-  
-  
   s.source_files = 'SPUIKitCategory/SPUIKitCategory.h'
+#  s.source_files = 'SPUIKitCategory/Classes/**/*'
   
   # s.resource_bundles = {
   #   'SPUIKitCategory' => ['SPUIKitCategory/Assets/*.png']
