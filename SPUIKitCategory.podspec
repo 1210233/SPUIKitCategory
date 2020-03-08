@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SPUIKitCategory'
-  s.version          = '1.0.0'
+  s.version          = '1.0.2'
   s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
 
 # This description is used to generate tags and improve search results.

@@ -29,7 +29,6 @@ SPEC REPOS:
     - SPUIKitCategory
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
-  trunk:
     - FMDB
 
 SPEC CHECKSUMS:
