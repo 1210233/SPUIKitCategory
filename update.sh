@@ -49,8 +49,9 @@ do
         if [[ $rr =~ "Adding the spec to the " &&  $rr =~ "Pushing the " ]]
         then
             echo "pod push spec to '$privateSpecName' success."
-            echo "now excuting 'pod repo update $privateSpecName'..."
-            pod repo update $privateSpecName
+            
+#            echo "now excuting 'pod repo update $privateSpecName'..."
+#            pod repo update $privateSpecName
         else
             echo "pod push spec to '$privateSpecName' faild."
         fi
