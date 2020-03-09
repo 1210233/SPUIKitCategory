@@ -41,8 +41,8 @@ do
 
 
     # Pod spec lint start
-    echo "now excuting 'pod spec lint --allow-warnings'..."
-    rr=$(pod spec lint --allow-warnings)
+    echo "now excuting 'pod spec lint --sources=https://gitee.com/1210233/SPSpecs.git,https://github.com/CocoaPods/Specs.git --allow-warnings'..."
+    rr=$(pod spec lint --sources=https://gitee.com/1210233/SPSpecs.git,https://github.com/CocoaPods/Specs.git --allow-warnings)
 
     success_flag="$file passed validation"
 
