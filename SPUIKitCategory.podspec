@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SPUIKitCategory'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
   s.description      = <<-DESC
     SPUIKitCategory是UIKit的分类 的集合
@@ -48,13 +48,13 @@ Pod::Spec.new do |s|
 
 #   s.dependency 'AFNetworking'
 #   s.dependency 'YYModel'
-#   s.dependency 'SPUIViewCategory', '1.0.0'
+   s.dependency 'SPUIViewCategory'
    
-   s.subspec 'SPUIViewCategory' do |ss|
-     ss.dependency 'SPUIViewCategory', '1.0.0'
-#     ss.source_files = 'SPUIViewCategory/*.{h,m}'
-#     ss.public_header_files = 'iOS-Tools/AlertView/GFBCustomAlertView.h'
-   end
+#   s.subspec 'SPUIViewCategory' do |ss|
+#     ss.dependency 'SPUIViewCategory', '1.0.0'
+##     ss.source_files = 'SPUIViewCategory/*.{h,m}'
+##     ss.public_header_files = 'iOS-Tools/AlertView/GFBCustomAlertView.h'
+#   end
   
 #  s.weak_framework = 'MessageUI'
 
