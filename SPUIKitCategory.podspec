@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SPUIKitCategory'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
   s.description      = <<-DESC
     SPUIKitCategory是UIKit的分类 的集合
@@ -52,7 +52,7 @@ Pod::Spec.new do |s|
    
    s.subspec 'SPUIViewCategory' do |ss|
      ss.dependency 'SPUIViewCategory', '1.0.0'
-     ss.source_files = 'SPUIKitCategorySPUIViewCategory/*.{h,m}'
+#     ss.source_files = 'SPUIViewCategory/*.{h,m}'
 #     ss.public_header_files = 'iOS-Tools/AlertView/GFBCustomAlertView.h'
    end
   
