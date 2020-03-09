@@ -1,6 +1,0 @@
-framework module SPUIKitCategory {
-  umbrella header "SPUIKitCategory-umbrella.h"
-
-  export *
-  module * { export * }
-}
