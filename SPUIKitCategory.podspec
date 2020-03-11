@@ -48,13 +48,19 @@ Pod::Spec.new do |s|
 
 #   s.dependency 'AFNetworking'
 #   s.dependency 'YYModel'
-   s.dependency 'SPUIViewCategory'
-   
-#   s.subspec 'SPUIViewCategory' do |ss|
-#     ss.dependency 'SPUIViewCategory', '1.0.0'
-##     ss.source_files = 'SPUIViewCategory/*.{h,m}'
-##     ss.public_header_files = 'iOS-Tools/AlertView/GFBCustomAlertView.h'
-#   end
+#   s.dependency 'SPUIViewCategory'
+
+
+s.subspec 'UIView' do |ss|
+    ss.source_files = 'SPUIKitCategory/UIView/*.{h,m}'
+    ss.public_header_files = 'SPUIKitCategory/UIView/*.h'
+end
+
+s.subspec 'UITextView' do |ss|
+    ss.dependency 'SPUIKitCategory/UIView'
+    ss.source_files = 'SPUIKitCategory/UITextView/*.{h,m}'
+    ss.public_header_files = 'SPUIKitCategory/UITextView/*.h'
+end
   
 #  s.weak_framework = 'MessageUI'
 

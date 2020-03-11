@@ -21,7 +21,22 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		75CD426F24153C44007EBFB7 /* update.sh in Resources */ = {isa = PBXBuildFile; fileRef = 75CD426E24153C44007EBFB7 /* update.sh */; };
+		75CD43192418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42BA2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m */; };
+		75CD431C2418CB38007EBFB7 /* UINib+FastCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42C42418CB38007EBFB7 /* UINib+FastCreate.m */; };
+		75CD43212418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42D22418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m */; };
+		75CD432C2418CB39007EBFB7 /* UIButton+AutoScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42E82418CB38007EBFB7 /* UIButton+AutoScale.m */; };
+		75CD432D2418CB39007EBFB7 /* UIButton+AutoLayoutFitSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42E92418CB38007EBFB7 /* UIButton+AutoLayoutFitSize.m */; };
+		75CD432F2418CB39007EBFB7 /* UILabel+AutoScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42F22418CB38007EBFB7 /* UILabel+AutoScale.m */; };
+		75CD43312418CB39007EBFB7 /* UILabel+AutoLayoutFitSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42F52418CB38007EBFB7 /* UILabel+AutoLayoutFitSize.m */; };
+		75CD433A2418CB39007EBFB7 /* UIView+XIBCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD43022418CB38007EBFB7 /* UIView+XIBCreation.m */; };
+		75CD433B2418CB39007EBFB7 /* UIView+LayoutConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD43032418CB38007EBFB7 /* UIView+LayoutConstraints.m */; };
+		75CD433C2418CB39007EBFB7 /* UIView+Nib.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD43072418CB38007EBFB7 /* UIView+Nib.m */; };
+		75CD433E2418CB39007EBFB7 /* UIViewController+XIBCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD43102418CB38007EBFB7 /* UIViewController+XIBCreation.m */; };
+		75CD434324190D4C007EBFB7 /* UIColor+SPCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD434224190D4C007EBFB7 /* UIColor+SPCreate.m */; };
+		75CD434624191399007EBFB7 /* UIImage+ValidSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD434424191398007EBFB7 /* UIImage+ValidSize.m */; };
+		75CD4349241916D0007EBFB7 /* UIButton+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD4348241916CF007EBFB7 /* UIButton+Loading.m */; };
+		75CD434C241917FF007EBFB7 /* UIFont+FastCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD434B241917FF007EBFB7 /* UIFont+FastCreate.m */; };
+		75CD435024193A45007EBFB7 /* UIWindow+KeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD434F24193A45007EBFB7 /* UIWindow+KeyWindow.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9248AD7C5964F040D5C483A8 /* Pods_SPUIKitCategory_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E9E43AE8F9DD8A2942437D /* Pods_SPUIKitCategory_Example.framework */; };
 		A05CED57C37E9A24F6BD078C /* Pods_SPUIKitCategory_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B72E91122E9FFAEBFFE2F /* Pods_SPUIKitCategory_Tests.framework */; };
@@ -63,7 +78,39 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73DE69C730854814C6929D2F /* Pods-SPUIKitCategory_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Tests/Pods-SPUIKitCategory_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		75CD426E24153C44007EBFB7 /* update.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = update.sh; path = ../update.sh; sourceTree = "<group>"; };
+		75CD42BA2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+TouchHighlightEffect.m"; sourceTree = "<group>"; };
+		75CD42BB2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+TouchHighlightEffect.h"; sourceTree = "<group>"; };
+		75CD42C32418CB38007EBFB7 /* UINib+FastCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+FastCreate.h"; sourceTree = "<group>"; };
+		75CD42C42418CB38007EBFB7 /* UINib+FastCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+FastCreate.m"; sourceTree = "<group>"; };
+		75CD42D12418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoLayoutFitSize.h"; sourceTree = "<group>"; };
+		75CD42D22418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoLayoutFitSize.m"; sourceTree = "<group>"; };
+		75CD42E82418CB38007EBFB7 /* UIButton+AutoScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AutoScale.m"; sourceTree = "<group>"; };
+		75CD42E92418CB38007EBFB7 /* UIButton+AutoLayoutFitSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AutoLayoutFitSize.m"; sourceTree = "<group>"; };
+		75CD42ED2418CB38007EBFB7 /* UIButton+AutoScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AutoScale.h"; sourceTree = "<group>"; };
+		75CD42EE2418CB38007EBFB7 /* UIButton+AutoLayoutFitSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AutoLayoutFitSize.h"; sourceTree = "<group>"; };
+		75CD42F12418CB38007EBFB7 /* UILabel+AutoLayoutFitSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AutoLayoutFitSize.h"; sourceTree = "<group>"; };
+		75CD42F22418CB38007EBFB7 /* UILabel+AutoScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+AutoScale.m"; sourceTree = "<group>"; };
+		75CD42F52418CB38007EBFB7 /* UILabel+AutoLayoutFitSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+AutoLayoutFitSize.m"; sourceTree = "<group>"; };
+		75CD42F72418CB38007EBFB7 /* UILabel+AutoScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AutoScale.h"; sourceTree = "<group>"; };
+		75CD42FA2418CB38007EBFB7 /* UIView+Nib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Nib.h"; sourceTree = "<group>"; };
+		75CD43022418CB38007EBFB7 /* UIView+XIBCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XIBCreation.m"; sourceTree = "<group>"; };
+		75CD43032418CB38007EBFB7 /* UIView+LayoutConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LayoutConstraints.m"; sourceTree = "<group>"; };
+		75CD43072418CB38007EBFB7 /* UIView+Nib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Nib.m"; sourceTree = "<group>"; };
+		75CD430C2418CB38007EBFB7 /* UIView+LayoutConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LayoutConstraints.h"; sourceTree = "<group>"; };
+		75CD430D2418CB38007EBFB7 /* UIView+XIBCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XIBCreation.h"; sourceTree = "<group>"; };
+		75CD430E2418CB38007EBFB7 /* SPUIKitCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUIKitCategory.h; sourceTree = "<group>"; };
+		75CD43102418CB38007EBFB7 /* UIViewController+XIBCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XIBCreation.m"; sourceTree = "<group>"; };
+		75CD43112418CB38007EBFB7 /* UIViewController+XIBCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XIBCreation.h"; sourceTree = "<group>"; };
+		75CD434124190D4B007EBFB7 /* UIColor+SPCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SPCreate.h"; sourceTree = "<group>"; };
+		75CD434224190D4C007EBFB7 /* UIColor+SPCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SPCreate.m"; sourceTree = "<group>"; };
+		75CD434424191398007EBFB7 /* UIImage+ValidSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ValidSize.m"; sourceTree = "<group>"; };
+		75CD434524191398007EBFB7 /* UIImage+ValidSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ValidSize.h"; sourceTree = "<group>"; };
+		75CD4347241916CF007EBFB7 /* UIButton+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Loading.h"; sourceTree = "<group>"; };
+		75CD4348241916CF007EBFB7 /* UIButton+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Loading.m"; sourceTree = "<group>"; };
+		75CD434A241917FF007EBFB7 /* UIFont+FastCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FastCreate.h"; sourceTree = "<group>"; };
+		75CD434B241917FF007EBFB7 /* UIFont+FastCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FastCreate.m"; sourceTree = "<group>"; };
+		75CD434E24193A45007EBFB7 /* UIWindow+KeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+KeyWindow.h"; sourceTree = "<group>"; };
+		75CD434F24193A45007EBFB7 /* UIWindow+KeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+KeyWindow.m"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE071218141C0DE0271F8B36 /* Pods-SPUIKitCategory_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Example.release.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Example/Pods-SPUIKitCategory_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B4B592644AB93103691D0B8D /* Pods-SPUIKitCategory_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Tests.release.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Tests/Pods-SPUIKitCategory_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +181,7 @@
 		6003F593195388D20070C39A /* Example for SPUIKitCategory */ = {
 			isa = PBXGroup;
 			children = (
+				75CD42B52418CB38007EBFB7 /* SPUIKitCategory */,
 				6003F59C195388D20070C39A /* SPAppDelegate.h */,
 				6003F59D195388D20070C39A /* SPAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -180,7 +228,6 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				75CD426E24153C44007EBFB7 /* update.sh */,
 				188AE2B0A3FC024BD67E6F8D /* SPUIKitCategory.podspec */,
 				5A35827E6D8AF7293F07A4BF /* README.md */,
 				DBD471F26507424F057F52A1 /* LICENSE */,
@@ -197,6 +244,135 @@
 				B4B592644AB93103691D0B8D /* Pods-SPUIKitCategory_Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		75CD42B52418CB38007EBFB7 /* SPUIKitCategory */ = {
+			isa = PBXGroup;
+			children = (
+				75CD430E2418CB38007EBFB7 /* SPUIKitCategory.h */,
+				75CD42E42418CB38007EBFB7 /* UIButton */,
+				75CD42CB2418CB38007EBFB7 /* UIColor */,
+				75CD42B92418CB38007EBFB7 /* UIControl */,
+				75CD43122418CB38007EBFB7 /* UIFont */,
+				75CD42D32418CB38007EBFB7 /* UIImage */,
+				75CD42EF2418CB38007EBFB7 /* UILabel */,
+				75CD42C22418CB38007EBFB7 /* UINib */,
+				75CD42D02418CB38007EBFB7 /* UITextView */,
+				75CD42F92418CB38007EBFB7 /* UIView */,
+				75CD430F2418CB38007EBFB7 /* UIViewController */,
+				75CD434D24193A44007EBFB7 /* UIWindow */,
+			);
+			name = SPUIKitCategory;
+			path = ../../SPUIKitCategory;
+			sourceTree = "<group>";
+		};
+		75CD42B92418CB38007EBFB7 /* UIControl */ = {
+			isa = PBXGroup;
+			children = (
+				75CD42BA2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m */,
+				75CD42BB2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.h */,
+			);
+			path = UIControl;
+			sourceTree = "<group>";
+		};
+		75CD42C22418CB38007EBFB7 /* UINib */ = {
+			isa = PBXGroup;
+			children = (
+				75CD42C32418CB38007EBFB7 /* UINib+FastCreate.h */,
+				75CD42C42418CB38007EBFB7 /* UINib+FastCreate.m */,
+			);
+			path = UINib;
+			sourceTree = "<group>";
+		};
+		75CD42CB2418CB38007EBFB7 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				75CD434124190D4B007EBFB7 /* UIColor+SPCreate.h */,
+				75CD434224190D4C007EBFB7 /* UIColor+SPCreate.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		75CD42D02418CB38007EBFB7 /* UITextView */ = {
+			isa = PBXGroup;
+			children = (
+				75CD42D12418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.h */,
+				75CD42D22418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m */,
+			);
+			path = UITextView;
+			sourceTree = "<group>";
+		};
+		75CD42D32418CB38007EBFB7 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				75CD434524191398007EBFB7 /* UIImage+ValidSize.h */,
+				75CD434424191398007EBFB7 /* UIImage+ValidSize.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		75CD42E42418CB38007EBFB7 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				75CD4347241916CF007EBFB7 /* UIButton+Loading.h */,
+				75CD4348241916CF007EBFB7 /* UIButton+Loading.m */,
+				75CD42ED2418CB38007EBFB7 /* UIButton+AutoScale.h */,
+				75CD42E82418CB38007EBFB7 /* UIButton+AutoScale.m */,
+				75CD42EE2418CB38007EBFB7 /* UIButton+AutoLayoutFitSize.h */,
+				75CD42E92418CB38007EBFB7 /* UIButton+AutoLayoutFitSize.m */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		75CD42EF2418CB38007EBFB7 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				75CD42F72418CB38007EBFB7 /* UILabel+AutoScale.h */,
+				75CD42F22418CB38007EBFB7 /* UILabel+AutoScale.m */,
+				75CD42F12418CB38007EBFB7 /* UILabel+AutoLayoutFitSize.h */,
+				75CD42F52418CB38007EBFB7 /* UILabel+AutoLayoutFitSize.m */,
+			);
+			path = UILabel;
+			sourceTree = "<group>";
+		};
+		75CD42F92418CB38007EBFB7 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				75CD42FA2418CB38007EBFB7 /* UIView+Nib.h */,
+				75CD43072418CB38007EBFB7 /* UIView+Nib.m */,
+				75CD430D2418CB38007EBFB7 /* UIView+XIBCreation.h */,
+				75CD43022418CB38007EBFB7 /* UIView+XIBCreation.m */,
+				75CD430C2418CB38007EBFB7 /* UIView+LayoutConstraints.h */,
+				75CD43032418CB38007EBFB7 /* UIView+LayoutConstraints.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		75CD430F2418CB38007EBFB7 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75CD43112418CB38007EBFB7 /* UIViewController+XIBCreation.h */,
+				75CD43102418CB38007EBFB7 /* UIViewController+XIBCreation.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		75CD43122418CB38007EBFB7 /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				75CD434A241917FF007EBFB7 /* UIFont+FastCreate.h */,
+				75CD434B241917FF007EBFB7 /* UIFont+FastCreate.m */,
+			);
+			path = UIFont;
+			sourceTree = "<group>";
+		};
+		75CD434D24193A44007EBFB7 /* UIWindow */ = {
+			isa = PBXGroup;
+			children = (
+				75CD434E24193A45007EBFB7 /* UIWindow+KeyWindow.h */,
+				75CD434F24193A45007EBFB7 /* UIWindow+KeyWindow.m */,
+			);
+			path = UIWindow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,7 +458,6 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
-				75CD426F24153C44007EBFB7 /* update.sh in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -371,8 +546,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* SPAppDelegate.m in Sources */,
+				75CD434C241917FF007EBFB7 /* UIFont+FastCreate.m in Sources */,
+				75CD431C2418CB38007EBFB7 /* UINib+FastCreate.m in Sources */,
+				75CD433B2418CB39007EBFB7 /* UIView+LayoutConstraints.m in Sources */,
+				75CD432C2418CB39007EBFB7 /* UIButton+AutoScale.m in Sources */,
+				75CD432D2418CB39007EBFB7 /* UIButton+AutoLayoutFitSize.m in Sources */,
+				75CD433E2418CB39007EBFB7 /* UIViewController+XIBCreation.m in Sources */,
+				75CD433C2418CB39007EBFB7 /* UIView+Nib.m in Sources */,
+				75CD434324190D4C007EBFB7 /* UIColor+SPCreate.m in Sources */,
+				75CD43192418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m in Sources */,
+				75CD4349241916D0007EBFB7 /* UIButton+Loading.m in Sources */,
+				75CD434624191399007EBFB7 /* UIImage+ValidSize.m in Sources */,
+				75CD43312418CB39007EBFB7 /* UILabel+AutoLayoutFitSize.m in Sources */,
+				75CD43212418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m in Sources */,
+				75CD433A2418CB39007EBFB7 /* UIView+XIBCreation.m in Sources */,
 				6003F5A7195388D20070C39A /* SPViewController.m in Sources */,
+				75CD435024193A45007EBFB7 /* UIWindow+KeyWindow.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				75CD432F2418CB39007EBFB7 /* UILabel+AutoScale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
