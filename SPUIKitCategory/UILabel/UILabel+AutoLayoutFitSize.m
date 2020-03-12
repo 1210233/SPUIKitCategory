@@ -7,6 +7,7 @@
 //
 
 #import "UILabel+AutoLayoutFitSize.h"
+#import "UIView+LayoutConstraints.h"
 
 @implementation UILabel (AutoLayoutFitSize)
 

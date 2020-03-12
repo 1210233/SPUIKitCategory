@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'SPUIKitCategory'
-    s.version          = '1.0.4'
+    s.version          = '1.0.5'
     s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
     s.description      = <<-DESC
     SPUIKitCategory是UIKit的分类 的集合
@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
     s.homepage         = 'https://gitee.com/1210233'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { '1210233' => '1210233@163.com' }
-    s.source           = { :git => 'https://gitee.com/1210233/SPUIKitCategory.git', :tag => s.version.to_s }
-
+    s.source           = { :git => 'https://gitee.com/1210233/SPUIKitCategory.git', :tag => s.version.to_s, :submodules => true  }
+    s.requires_arc = true
 
     #//仅支持ios
     s.platform = :ios
@@ -26,9 +26,9 @@ Pod::Spec.new do |s|
 
 
     s.prefix_header_contents = <<-EOS
-    #ifdef __OBJC__
-    #import "SPUIKitCategory.h"    //SGExtension包含了所有头文件
-    #endif
+    //#ifdef __OBJC__
+    //#import "SPUIKitCategory.h"    //包含了所有头文件
+    //#endif
     EOS
 
 
@@ -36,8 +36,14 @@ Pod::Spec.new do |s|
     s.public_header_files = 'SPUIKitCategory/SPUIKitCategory.h'
 
 
-
+    
+    s.subspec 'UIView' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIView/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIView/*.h'
+    end
+    
     s.subspec 'UILabel' do |ss|
+        ss.dependency 'SPUIKitCategory/UIView'
         ss.source_files = 'SPUIKitCategory/UILabel/*.{h,m}'
         ss.public_header_files = 'SPUIKitCategory/UILabel/*.h'
     end
@@ -71,11 +77,6 @@ Pod::Spec.new do |s|
     s.subspec 'UINib' do |ss|
         ss.source_files = 'SPUIKitCategory/UINib/*.{h,m}'
         ss.public_header_files = 'SPUIKitCategory/UINib/*.h'
-    end
-
-    s.subspec 'UIView' do |ss|
-        ss.source_files = 'SPUIKitCategory/UIView/*.{h,m}'
-        ss.public_header_files = 'SPUIKitCategory/UIView/*.h'
     end
 
     s.subspec 'UITextView' do |ss|
