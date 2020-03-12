@@ -49,6 +49,7 @@ Pod::Spec.new do |s|
     end
     
     s.subspec 'UIButton' do |ss|
+        ss.dependency 'SPUIKitCategory/UIView'
         ss.dependency 'SPUIKitCategory/UILabel'
         ss.source_files = 'SPUIKitCategory/UIButton/*.{h,m}'
         ss.public_header_files = 'SPUIKitCategory/UIButton/*.h'
