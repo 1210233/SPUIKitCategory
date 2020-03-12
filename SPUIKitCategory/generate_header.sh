@@ -40,6 +40,13 @@ for file in `ls`
 do
     if [ -d $1$file ]
     then
+    
+        echo "s.subspec '$file' do |ss|"
+        echo "    ss.source_files = '$pathname/$file/*.{h,m}'"
+        echo "    ss.public_header_files = '$pathname/$file/*.h'"
+        echo "end"
+        echo ""
+        
         e $1$file
     fi
 done

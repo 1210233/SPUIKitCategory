@@ -269,8 +269,8 @@
 		75CD42B92418CB38007EBFB7 /* UIControl */ = {
 			isa = PBXGroup;
 			children = (
-				75CD42BA2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m */,
 				75CD42BB2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.h */,
+				75CD42BA2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m */,
 			);
 			path = UIControl;
 			sourceTree = "<group>";

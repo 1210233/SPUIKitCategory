@@ -7,87 +7,91 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'SPUIKitCategory'
-  s.version          = '1.0.4'
-  s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
-  s.description      = <<-DESC
+    s.name             = 'SPUIKitCategory'
+    s.version          = '1.0.4'
+    s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
+    s.description      = <<-DESC
     SPUIKitCategory是UIKit的分类 的集合
-                       DESC
+    DESC
 
-  s.homepage         = 'https://gitee.com/1210233'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '1210233' => '1210233@163.com' }
-  s.source           = { :git => 'https://gitee.com/1210233/SPUIKitCategory.git', :tag => s.version.to_s }
-  
-  
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  
-  #//仅支持ios
-  s.platform = :ios
-  s.ios.deployment_target = '8.0'
-  
-
-  s.prefix_header_contents = <<-EOS
-  #ifdef __OBJC__
-  #import "SPUIKitCategory.h"    //SGExtension包含了所有头文件
-  #endif
-  EOS
-  
-  
-  s.source_files = 'SPUIKitCategory/SPUIKitCategory.h'
-#  s.source_files = 'SPUIKitCategory/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SPUIKitCategory' => ['SPUIKitCategory/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-
-#   s.dependency 'AFNetworking'
-#   s.dependency 'YYModel'
-#   s.dependency 'SPUIViewCategory'
+    s.homepage         = 'https://gitee.com/1210233'
+    s.license          = { :type => 'MIT', :file => 'LICENSE' }
+    s.author           = { '1210233' => '1210233@163.com' }
+    s.source           = { :git => 'https://gitee.com/1210233/SPUIKitCategory.git', :tag => s.version.to_s }
 
 
-s.subspec 'UIView' do |ss|
-    ss.source_files = 'SPUIKitCategory/UIView/*.{h,m}'
-    ss.public_header_files = 'SPUIKitCategory/UIView/*.h'
-end
-
-s.subspec 'UITextView' do |ss|
-    ss.dependency 'SPUIKitCategory/UIView'
-    ss.source_files = 'SPUIKitCategory/UITextView/*.{h,m}'
-    ss.public_header_files = 'SPUIKitCategory/UITextView/*.h'
-end
-  
-#  s.weak_framework = 'MessageUI'
+    #//仅支持ios
+    s.platform = :ios
+    s.ios.deployment_target = '8.0'
 
 
-# *匹配所有文件
-#
-# c*匹配以名字C开头的文件
-#
-# *c匹配以名字c结尾的文件
-#
-# *c*匹配所有名字包含c的文件
-#
-# ** 文件夹以及递归子文件夹
-#
-# ?任意一个字符(注意是一个字符)
-#
-# [set]匹配多个字符,支持取反
-#
-# {p,q}匹配名字包括p 或者 q的文件
+    s.prefix_header_contents = <<-EOS
+    #ifdef __OBJC__
+    #import "SPUIKitCategory.h"    //SGExtension包含了所有头文件
+    #endif
+    EOS
 
 
-#"JSONKit.?"    #=> ["JSONKit.h", "JSONKit.m"]   //JSONKit.字符
-#"*.[a-z][a-z]" #=> ["CHANGELOG.md", "README.md"]//.两个a-z的字母
-#"*.[^m]*"      #=> ["JSONKit.h"]                //.不是m的字符
-#"*.{h,m}"      #=> ["JSONKit.h", "JSONKit.m"]   //包含.h或者.m
-#"*"            #=> ["CHANGELOG.md", "JSONKit.h", "JSONKit.m", "README.md"]//所有文件
+    s.source_files = 'SPUIKitCategory/SPUIKitCategory.h'
+    s.public_header_files = 'SPUIKitCategory/SPUIKitCategory.h'
 
 
 
+    s.subspec 'UILabel' do |ss|
+        ss.source_files = 'SPUIKitCategory/UILabel/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UILabel/*.h'
+    end
+    
+    s.subspec 'UIButton' do |ss|
+        ss.dependency 'SPUIKitCategory/UILabel'
+        ss.source_files = 'SPUIKitCategory/UIButton/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIButton/*.h'
+    end
+
+    s.subspec 'UIColor' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIColor/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIColor/*.h'
+    end
+
+    s.subspec 'UIControl' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIControl/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIControl/*.h'
+    end
+
+    s.subspec 'UIFont' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIFont/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIFont/*.h'
+    end
+
+    s.subspec 'UIImage' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIImage/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIImage/*.h'
+    end
+
+    s.subspec 'UINib' do |ss|
+        ss.source_files = 'SPUIKitCategory/UINib/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UINib/*.h'
+    end
+
+    s.subspec 'UIView' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIView/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIView/*.h'
+    end
+
+    s.subspec 'UITextView' do |ss|
+        ss.dependency 'SPUIKitCategory/UIView'
+        ss.source_files = 'SPUIKitCategory/UITextView/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UITextView/*.h'
+    end
+
+    s.subspec 'UIViewController' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIViewController/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIViewController/*.h'
+    end
+
+    s.subspec 'UIWindow' do |ss|
+        ss.source_files = 'SPUIKitCategory/UIWindow/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UIWindow/*.h'
+    end
+    
 end
