@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView+LayoutConstraints.h"
 
 
 /**
@@ -16,7 +15,7 @@
  *  设置约束时, 可在XIB或StoryBoard中关联, 也可以
  *  用代码初始化, 调用Setter即可.
  */
-@interface UILabel (AutoLayoutFitSize)
+@interface UIButton (AutoLayoutFitSize)
 
 
 /**
@@ -34,19 +33,19 @@
 -(CGFloat)fitWidthOffset:(CGFloat)os;
 
 
-/**
- *  在指定的宽度之内, 计算文本所占的高度.(单行/多行)
- *  @param width: frame的最大宽度.
- *  @return 计算后的高度值
- */
--(CGFloat)fitHeightForWidth:(CGFloat)width;
-
-/**
- *  在指定的宽度之内, 计算文本所占的高度.(单行/多行)
- *  @param width: frame的最大宽度.
- *  @param os: 文本所占的高度 + os 即为frame的高度. 范围:[FLT_MIN ~ FLT_MAX]
- *  @return 计算后的高度值
- */
--(CGFloat)fitHeightForWidth:(CGFloat)width offset:(CGFloat)os;
+///**
+// *  在指定的宽度之内, 计算文本所占的高度.(单行/多行)
+// *  @param width: frame的最大宽度.
+// *  @return 计算后的高度值
+// */
+//-(CGFloat)fitHeightForWidth:(CGFloat)width;
+//
+///**
+// *  在指定的宽度之内, 计算文本所占的高度.(单行/多行)
+// *  @param width: frame的最大宽度.
+// *  @param os: 文本所占的高度 + os 即为frame的高度. 范围:[FLT_MIN ~ FLT_MAX]
+// *  @return 计算后的高度值
+// */
+//-(CGFloat)fitHeightForWidth:(CGFloat)width offset:(CGFloat)os;
 
 @end
