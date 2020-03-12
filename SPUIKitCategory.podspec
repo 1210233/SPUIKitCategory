@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'SPUIKitCategory'
-    s.version          = '1.0.8'
+    s.version          = '1.2.0'
     s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
     s.description      = <<-DESC
     SPUIKitCategory是UIKit的分类 的集合
