@@ -1,14 +1,14 @@
 //
-//  UIView+TY_Nib.m
-//  ITHome
+//  UIView+Nib.m
+//  SPKit
 //
-//  Created by tanyang on 15/12/7.
-//  Copyright © 2015年 tanyang. All rights reserved.
+//  Created by 李双鹏 on 15/10/04.
+//  Copyright (c) 2015 LSP. All rights reserved.
 //
 
 #import "UIView+Nib.h"
 
-@implementation UIView (TY_Nib)
+@implementation UIView (SPNib)
 
 + (UINib *)loadNib
 {
@@ -27,35 +27,47 @@
 
 
 
-+ (instancetype)loadInstanceFromNib
-{
-    return [self loadInstanceFromNibWithName:NSStringFromClass([self class])];
+#pragma mark ------ XIB INSPECTABLE ------
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+    self.layer.cornerRadius = cornerRadius;
+}
+- (CGFloat)cornerRadius {
+    return self.layer.cornerRadius;
 }
 
-+ (instancetype)loadInstanceFromNibWithName:(NSString *)nibName
-{
-    return [self loadInstanceFromNibWithName:nibName owner:nil];
+- (void)setShadowOpacity:(CGFloat)shadowOpacity {
+    self.layer.shadowOpacity = shadowOpacity;
+}
+- (CGFloat)shadowOpacity {
+    return self.layer.shadowOpacity;
 }
 
-+ (instancetype)loadInstanceFromNibWithName:(NSString *)nibName owner:(id)owner
-{
-    return [self loadInstanceFromNibWithName:nibName owner:owner bundle:[NSBundle mainBundle]];
+- (void)setShadowRadius:(CGFloat)shadowRadius {
+    self.layer.shadowRadius = shadowRadius;
+}
+- (CGFloat)shadowRadius {
+    return self.layer.shadowRadius;
 }
 
-+ (instancetype)loadInstanceFromNibWithName:(NSString *)nibName owner:(id)owner bundle:(NSBundle *)bundle
-{
-    UIView *result = nil;
-    NSArray* elements = [bundle loadNibNamed:nibName owner:owner options:nil];
-    for (id object in elements)
-    {
-        if ([object isKindOfClass:[self class]])
-        {
-            result = object;
-            break;
-        }
-    }
-    return result;
+- (void)setShadowOffset:(CGSize)shadowOffset {
+    self.layer.shadowOffset = shadowOffset;
+}
+- (CGSize)shadowOffset {
+    return self.layer.shadowOffset;
 }
 
+- (void)setShadowColor:(UIColor *)shadowColor {
+    self.layer.shadowColor = shadowColor.CGColor;
+}
+- (UIColor *)shadowColor {
+    return [UIColor colorWithCGColor:self.layer.shadowColor];
+}
+
+- (void)setMaskToBounds:(BOOL)maskToBounds {
+    self.layer.masksToBounds = maskToBounds;
+}
+- (BOOL)maskToBounds {
+    return self.layer.masksToBounds;
+}
 
 @end

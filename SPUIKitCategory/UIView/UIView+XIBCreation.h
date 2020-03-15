@@ -2,8 +2,8 @@
 //  UIView+XIBCreation.h
 //  SmartCity
 //
-//  Created by ZCGC on 2017/5/12.
-//  Copyright © 2017年 NRH. All rights reserved.
+//  Created by LSP on 2017/5/12.
+//  Copyright © 2017年 LSP. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
