@@ -14,5 +14,8 @@
  *  从XIB文件（与类名相同的xib）初始化。
  */
 + (instancetype)loadFromNib;
++ (instancetype)loadFromNibWithName:(NSString *)nibName;
++ (instancetype)loadFromNibWithName:(NSString *)nibName owner:(id)owner;
++ (instancetype)loadFromNibWithName:(NSString *)nibName owner:(id)owner bundle:(NSBundle *)bundle;
 
 @end
