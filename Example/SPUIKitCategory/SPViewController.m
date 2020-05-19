@@ -7,6 +7,10 @@
 //
 
 #import "SPViewController.h"
+#import "ViewController.h"
+#import "UIViewController+XIBCreation.h"
+#import "SPView.h"
+#import "UIView+XIBCreation.h"
 
 @interface SPViewController ()
 
@@ -18,6 +22,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)click {
+//    ViewController *vc = [ViewController loadFromNib];
+    
+//    [self presentViewController:vc animated:YES completion:nil];
+    
+    SPView *v = [SPView loadFromNib];
+    
+    [self.view addSubview:v];
 }
 
 - (void)didReceiveMemoryWarning

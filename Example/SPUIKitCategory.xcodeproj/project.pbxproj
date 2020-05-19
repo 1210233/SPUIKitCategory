@@ -21,6 +21,10 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		75A6AB5F244FE363006AEAE6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A6AB5C244FE363006AEAE6 /* ViewController.xib */; };
+		75A6AB60244FE363006AEAE6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A6AB5E244FE363006AEAE6 /* ViewController.m */; };
+		75A6AB63244FE46D006AEAE6 /* SPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A6AB62244FE46D006AEAE6 /* SPView.m */; };
+		75A6AB65244FE479006AEAE6 /* SPView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A6AB64244FE479006AEAE6 /* SPView.xib */; };
 		75CD43192418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42BA2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m */; };
 		75CD431C2418CB38007EBFB7 /* UINib+FastCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42C42418CB38007EBFB7 /* UINib+FastCreate.m */; };
 		75CD43212418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CD42D22418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m */; };
@@ -78,6 +82,12 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73DE69C730854814C6929D2F /* Pods-SPUIKitCategory_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Tests/Pods-SPUIKitCategory_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		75A6AB5C244FE363006AEAE6 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		75A6AB5D244FE363006AEAE6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		75A6AB5E244FE363006AEAE6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		75A6AB61244FE46D006AEAE6 /* SPView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPView.h; sourceTree = "<group>"; };
+		75A6AB62244FE46D006AEAE6 /* SPView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPView.m; sourceTree = "<group>"; };
+		75A6AB64244FE479006AEAE6 /* SPView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SPView.xib; sourceTree = "<group>"; };
 		75CD42BA2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+TouchHighlightEffect.m"; sourceTree = "<group>"; };
 		75CD42BB2418CB38007EBFB7 /* UIControl+TouchHighlightEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+TouchHighlightEffect.h"; sourceTree = "<group>"; };
 		75CD42C32418CB38007EBFB7 /* UINib+FastCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+FastCreate.h"; sourceTree = "<group>"; };
@@ -186,6 +196,12 @@
 				6003F59D195388D20070C39A /* SPAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* SPViewController.h */,
+				75A6AB5C244FE363006AEAE6 /* ViewController.xib */,
+				75A6AB5D244FE363006AEAE6 /* ViewController.h */,
+				75A6AB5E244FE363006AEAE6 /* ViewController.m */,
+				75A6AB61244FE46D006AEAE6 /* SPView.h */,
+				75A6AB62244FE46D006AEAE6 /* SPView.m */,
+				75A6AB64244FE479006AEAE6 /* SPView.xib */,
 				6003F5A6195388D20070C39A /* SPViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -456,8 +472,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A6AB5F244FE363006AEAE6 /* ViewController.xib in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				75A6AB65244FE479006AEAE6 /* SPView.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -550,6 +568,7 @@
 				75CD431C2418CB38007EBFB7 /* UINib+FastCreate.m in Sources */,
 				75CD433B2418CB39007EBFB7 /* UIView+LayoutConstraints.m in Sources */,
 				75CD432C2418CB39007EBFB7 /* UIButton+AutoScale.m in Sources */,
+				75A6AB63244FE46D006AEAE6 /* SPView.m in Sources */,
 				75CD432D2418CB39007EBFB7 /* UIButton+AutoLayoutFitSize.m in Sources */,
 				75CD433E2418CB39007EBFB7 /* UIViewController+XIBCreation.m in Sources */,
 				75CD433C2418CB39007EBFB7 /* UIView+Nib.m in Sources */,
@@ -559,6 +578,7 @@
 				75CD434624191399007EBFB7 /* UIImage+ValidSize.m in Sources */,
 				75CD43312418CB39007EBFB7 /* UILabel+AutoLayoutFitSize.m in Sources */,
 				75CD43212418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m in Sources */,
+				75A6AB60244FE363006AEAE6 /* ViewController.m in Sources */,
 				75CD433A2418CB39007EBFB7 /* UIView+XIBCreation.m in Sources */,
 				6003F5A7195388D20070C39A /* SPViewController.m in Sources */,
 				75CD435024193A45007EBFB7 /* UIWindow+KeyWindow.m in Sources */,

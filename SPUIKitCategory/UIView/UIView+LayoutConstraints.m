@@ -655,7 +655,7 @@
                                               attribute:(NSLayoutAttributeCenterX)
                                              multiplier:1 constant:centerX];
     [self.superview sp_addConstraint:constraint];
-    self.bottomConstraint = constraint;
+    self.centerXConstraint = constraint;
     return constraint;
 }
 
@@ -680,7 +680,7 @@
                                               attribute:(NSLayoutAttributeCenterY)
                                              multiplier:1 constant:centerY];
     [self.superview sp_addConstraint:constraint];
-    self.bottomConstraint = constraint;
+    self.centerYConstraint = constraint;
     return constraint;
 }
 
