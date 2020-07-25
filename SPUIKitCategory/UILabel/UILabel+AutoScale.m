@@ -9,6 +9,21 @@
 #import "UILabel+AutoScale.h"
 #import <objc/runtime.h>
 
+@interface UIFont (SPAutoScale)
+@property (nonatomic, assign) BOOL autoscaled;
+@end
+@implementation UIFont (SPAutoScale)
+
+- (void)setAutoscaled:(BOOL)autoscaled {
+    objc_setAssociatedObject(self, "autoscaled", @(autoscaled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)autoscaled {
+    return [objc_getAssociatedObject(self, "autoscaled") boolValue];
+}
+
+@end
+
 @implementation UILabel (AutoScale)
 
 + (void)load{
@@ -42,7 +57,13 @@
 - (void)sp_setFont:(UIFont *)font {
     
     if (self.autoScaleFont) {
-        font = [font fontWithSize:font.pointSize * screenWidthScaleBase375()];
+        if (!font.autoscaled) {
+            font = [font fontWithSize:font.pointSize * screenWidthScaleBase375()];
+        }
+    }else{
+        if (font.autoscaled) {
+            font = [font fontWithSize:font.pointSize / screenWidthScaleBase375()];
+        }
     }
     return [self sp_setFont:font];
 }
@@ -54,9 +75,13 @@
     objc_setAssociatedObject(self, "autoScaleFont", @(autoScaleFont), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     if (autoScaleFont) {
-        return [self sp_setFont:[self.font fontWithSize:self.font.pointSize * screenWidthScaleBase375()]];
+        UIFont *font = [self.font fontWithSize:self.font.pointSize * screenWidthScaleBase375()];
+        font.autoscaled = YES;
+        return [self sp_setFont:font];
     }else{
-        return [self sp_setFont:[self.font fontWithSize:self.font.pointSize / screenWidthScaleBase375()]];
+        UIFont *font = [self.font fontWithSize:self.font.pointSize / screenWidthScaleBase375()];
+        font.autoscaled = NO;
+        return [self sp_setFont:font];
     }
 }
 
