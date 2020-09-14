@@ -40,14 +40,20 @@
 }
 
 - (void)sp_setBackgroundColor:(UIColor *)color {
-    
+    [self setSameColorToSubviews:color];
+
+    return [self sp_setBackgroundColor:color];
+}
+
+- (void)setSameColorToSubviews:(UIColor *)color {
     for (UIView *subview in self.subviews) {
-        if (subview.sameBackgroundColorWithSuperview &&
-            subview.backgroundColor != [UIColor clearColor]) {
-            subview.backgroundColor = color;
+        if (subview.sameBackgroundColorWithSuperview) {
+            if (subview.backgroundColor != [UIColor clearColor]) {
+                [subview sp_setBackgroundColor:color];
+            }
+            [subview setSameColorToSubviews:color];
         }
     }
-    return [self sp_setBackgroundColor:color];
 }
 
 - (void)setSameBackgroundColorWithSuperview:(BOOL)sameBackgroundColorWithSuperview {
