@@ -41,19 +41,23 @@
 }
 
 - (void)sp_setBackgroundColor:(UIColor *)color {
-    [self setSameColorToSubviews:color];
-   
-    return [self sp_setBackgroundColor:color];
+    if (self.sameBackgroundColorWithSuperview) {
+        [self setSameColorToSubviews:color];
+        if (self.backgroundColor == [UIColor clearColor]) {
+            return [self sp_setBackgroundColor:[UIColor clearColor]];
+        }else{
+            return [self sp_setBackgroundColor:color];
+        }
+    }else{
+        return [self sp_setBackgroundColor:color];
+    }
 }
 
 - (void)setSameColorToSubviews:(UIColor *)color {
     for (UIView *subview in self.subviews) {
            if (subview.sameBackgroundColorWithSuperview) {
+               subview.backgroundColor = color;
                [subview setSuperBackgroundColor:color];
-               if (subview.backgroundColor != [UIColor clearColor]) {
-                   [subview sp_setBackgroundColor:color];
-               }
-               [subview setSameColorToSubviews:color];
            }
        }
 }
@@ -62,21 +66,21 @@
     objc_setAssociatedObject(self, @selector(sameBackgroundColorWithSuperview), @(sameBackgroundColorWithSuperview), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     if (sameBackgroundColorWithSuperview) {
-        self.backgroundColor = self.superview.backgroundColor;
+        self.backgroundColor = self.superBackgroundColor;
     }
 }
 
 - (BOOL)sameBackgroundColorWithSuperview {
-    return [objc_getAssociatedObject(self, _cmd) boolValue];
+    return [objc_getAssociatedObject(self, @selector(sameBackgroundColorWithSuperview)) boolValue];
 }
 
 - (UIColor *)superBackgroundColor {
-    UIColor *color = objc_getAssociatedObject(self, _cmd);
-    if (!color) {
-        color = self.backgroundColor;
-    }
+    UIColor *color = objc_getAssociatedObject(self, @selector(superBackgroundColor));
     if (!color) {
         color = self.superview.superBackgroundColor;
+    }
+    if (!color) {
+        color = self.backgroundColor;
     }
     if (!color) {
         if (@available(iOS 13.0, *)) {
@@ -95,9 +99,11 @@
 - (void)sp_didMoveToSuperview {
     if (self.superview) {
         if (self.sameBackgroundColorWithSuperview) {
+            UIColor *color = self.superview.superBackgroundColor;
             if (self.backgroundColor != [UIColor clearColor]) {
-                [self setBackgroundColor:self.superview.superBackgroundColor];
+                [self sp_setBackgroundColor:color];
             }
+            [self setSameColorToSubviews:color];
         }
     }
     return [self sp_didMoveToSuperview];
