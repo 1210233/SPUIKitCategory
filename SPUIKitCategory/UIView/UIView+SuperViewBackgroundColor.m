@@ -96,7 +96,7 @@
     if (self.superview) {
         if (self.sameBackgroundColorWithSuperview) {
             if (self.backgroundColor != [UIColor clearColor]) {
-                [self sp_setBackgroundColor:self.superview.superBackgroundColor];
+                [self setBackgroundColor:self.superview.superBackgroundColor];
             }
         }
     }
