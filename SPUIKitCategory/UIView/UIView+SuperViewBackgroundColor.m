@@ -100,7 +100,7 @@
             }
         }
     }
-    return [super sp_didMoveToSuperview];
+    return [self sp_didMoveToSuperview];
 }
 
 @end
