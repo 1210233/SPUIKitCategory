@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (SuperViewBackgroundColor)
+@property (nonatomic, readonly, copy) UIColor *superBackgroundColor;
 @property (nonatomic, assign) IBInspectable BOOL sameBackgroundColorWithSuperview;
 @end
 
