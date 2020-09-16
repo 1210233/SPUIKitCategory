@@ -46,8 +46,8 @@
     if (@available(iOS 13.0, *)) {
         UIColor *night = [self darkModeBackgroundColor];
         if (night) {
-            color = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) { \
-                if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) { \
+            color = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+                if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
                     return night;
                 }
                 return [color resolvedColorWithTraitCollection:traitCollection];
@@ -55,7 +55,7 @@
         }
     } else if (@available(iOS 12.0, *)) {
         UIColor *night = [self darkModeBackgroundColor];
-        if (night && [UIApplication sharedApplication].keyWindow.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) { \
+        if (night && [UIApplication sharedApplication].keyWindow.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
             color = night;
         }
     }
@@ -137,14 +137,14 @@
     UIColor *normal = self.backgroundColor;
     UIColor *color = normal;
     if (@available(iOS 13.0, *)) {
-        color = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) { \
-            if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) { \
+        color = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+            if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
                 return darkModeBackgroundColor;
             }
             return [normal resolvedColorWithTraitCollection:traitCollection];
         }];
     } else if (@available(iOS 12.0, *)) {
-        if ([UIApplication sharedApplication].keyWindow.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) { \
+        if ([UIApplication sharedApplication].keyWindow.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
             color = darkModeBackgroundColor;
         }
     }
