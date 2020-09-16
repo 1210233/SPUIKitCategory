@@ -80,6 +80,8 @@ NS_ASSUME_NONNULL_BEGIN
  trailingEqualToView:
  topEqualToView:
  bottomEqualToView:
+ widthEqualToView:
+ heightEqualToView:
  
  @param view 被参照的视图。
  @return 所约束两个视图的约束对象。
@@ -88,6 +90,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSLayoutConstraint *)trailingEqualToView:(UIView *)view;
 - (NSLayoutConstraint *)topEqualToView:(UIView *)view;
 - (NSLayoutConstraint *)bottomEqualToView:(UIView *)view;
+- (NSLayoutConstraint *)widthEqualToView:(UIView *)view; // multiplier 默认 1
+- (NSLayoutConstraint *)widthEqualToView:(UIView *)view multiplier:(CGFloat)multiplier; // multiplier 比例 1表示相等
+- (NSLayoutConstraint *)heightEqualToView:(UIView *)view; // multiplier 默认 1
+- (NSLayoutConstraint *)heightEqualToView:(UIView *)view multiplier:(CGFloat)multiplier; // multiplier 比例 1表示相等
+
 
 
 /**

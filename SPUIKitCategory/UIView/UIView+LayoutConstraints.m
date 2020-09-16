@@ -270,6 +270,53 @@
     return constraint;
 }
 
+- (NSLayoutConstraint *)widthEqualToView:(UIView *)view {
+    return [self widthEqualToView:view multiplier:1];
+}
+- (NSLayoutConstraint *)widthEqualToView:(UIView *)view multiplier:(CGFloat)multiplier {
+    NSMutableDictionary *dic = [self constraintsDicForView:view];
+    NSLayoutConstraint *constraint = dic[@"width"];
+    if (!constraint) {
+        if (self.translatesAutoresizingMaskIntoConstraints) {
+            self.translatesAutoresizingMaskIntoConstraints = NO;
+        }
+        constraint = [NSLayoutConstraint constraintWithItem:self
+                                                  attribute:(NSLayoutAttributeWidth)
+                                                  relatedBy:(NSLayoutRelationEqual)
+                                                     toItem:view
+                                                  attribute:(NSLayoutAttributeWidth)
+                                                 multiplier:multiplier constant:0];
+        [self.superview sp_addConstraint:constraint];
+        [view constraintsDicForView:self][@"width"] =
+        dic[@"width"] = constraint;
+    }
+    return constraint;
+}
+
+- (NSLayoutConstraint *)heightEqualToView:(UIView *)view {
+    return [self heightEqualToView:view multiplier:1];
+}
+- (NSLayoutConstraint *)heightEqualToView:(UIView *)view multiplier:(CGFloat)multiplier {
+    NSMutableDictionary *dic = [self constraintsDicForView:view];
+    NSLayoutConstraint *constraint = dic[@"height"];
+    if (!constraint) {
+        if (self.translatesAutoresizingMaskIntoConstraints) {
+            self.translatesAutoresizingMaskIntoConstraints = NO;
+        }
+        constraint = [NSLayoutConstraint constraintWithItem:self
+                                                  attribute:(NSLayoutAttributeHeight)
+                                                  relatedBy:(NSLayoutRelationEqual)
+                                                     toItem:view
+                                                  attribute:(NSLayoutAttributeHeight)
+                                                 multiplier:multiplier constant:0];
+        [self.superview sp_addConstraint:constraint];
+        [view constraintsDicForView:self][@"height"] =
+        dic[@"height"] = constraint;
+    }
+    return constraint;
+}
+
+
 - (NSLayoutConstraint *)leadingSpacingToView:(UIView *)view {
     NSMutableDictionary *dic = [self constraintsDicForView:view];
     NSLayoutConstraint *constraint = dic[@"left_spacing"];
@@ -648,10 +695,10 @@
     if (self.translatesAutoresizingMaskIntoConstraints) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.superview
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
                                               attribute:(NSLayoutAttributeCenterX)
                                               relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:self
+                                                 toItem:self.superview
                                               attribute:(NSLayoutAttributeCenterX)
                                              multiplier:1 constant:centerX];
     [self.superview sp_addConstraint:constraint];
@@ -673,10 +720,10 @@
     if (self.translatesAutoresizingMaskIntoConstraints) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.superview
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
                                               attribute:(NSLayoutAttributeCenterY)
                                               relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:self
+                                                 toItem:self.superview
                                               attribute:(NSLayoutAttributeCenterY)
                                              multiplier:1 constant:centerY];
     [self.superview sp_addConstraint:constraint];
