@@ -1,5 +1,5 @@
 //
-//  UIView+SuperViewBackgroundColor.h
+//  UIView+SPDarkModeSupport.h
 //  SPKitCategory
 //
 //  Created by LSP on 2020/9/14.
@@ -11,7 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIView (SuperViewBackgroundColor)
+@interface UIView (SPDarkModeSupport)
+@property (nonatomic, copy) IBInspectable UIColor *darkModeBackgroundColor API_AVAILABLE(ios(12.0));
 @property (nonatomic, readonly, copy) UIColor *superBackgroundColor;
 @property (nonatomic, assign) IBInspectable BOOL sameBackgroundColorWithSuperview;
 @end
