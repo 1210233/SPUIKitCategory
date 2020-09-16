@@ -13,7 +13,9 @@
 
 + (void)load{
     NSArray *originalSelectors = @[@"setBackgroundColor:",
-                                   @"didMoveToSuperview"];
+                                   @"didMoveToSuperview" //,
+                                   //@"traitCollectionDidChange:"
+                                   ];
     
     for (NSString *selectorName in originalSelectors) {
         SEL originalSelector = NSSelectorFromString(selectorName);
@@ -159,6 +161,11 @@
             [subview setSuperBackgroundColor:color];
         }
     }
+}
+
+- (void)sp_traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+//    self.layer.color
+    return [self sp_traitCollectionDidChange:previousTraitCollection];
 }
 
 @end
