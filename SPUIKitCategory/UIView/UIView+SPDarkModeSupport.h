@@ -1,6 +1,6 @@
 //
 //  UIView+SPDarkModeSupport.h
-//  SPKitCategory
+//  SPUIKitCategory
 //
 //  Created by LSP on 2020/9/14.
 //  Copyright © 2020 lsp. All rights reserved.
