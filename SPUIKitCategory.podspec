@@ -48,6 +48,11 @@ Pod::Spec.new do |s|
         ss.public_header_files = 'SPUIKitCategory/UILabel/*.h'
     end
     
+    s.subspec 'UITextField' do |ss|
+        ss.source_files = 'SPUIKitCategory/UITextField/*.{h,m}'
+        ss.public_header_files = 'SPUIKitCategory/UITextField/*.h'
+    end
+
     s.subspec 'UIButton' do |ss|
         ss.dependency 'SPUIKitCategory/UIView'
         ss.dependency 'SPUIKitCategory/UILabel'
