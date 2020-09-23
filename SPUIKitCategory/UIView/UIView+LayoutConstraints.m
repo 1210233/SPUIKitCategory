@@ -56,7 +56,7 @@
                                 swizzledSelector,
                                 method_getImplementation(originalMethod),
                                 method_getTypeEncoding(originalMethod));
-
+            
         } else {
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
@@ -83,14 +83,14 @@
 
 #if RECOGNIZE_CONSTRAINTS_TO_PROPERTIES
 - (void)sp_addConstraint:(NSLayoutConstraint *)constraint  {
-    if (self.recognizeConstraintToPropeties) {        
+    if (self.recognizeConstraintToPropeties) {
         @try {
             [self matchingPropertryForConstraint:constraint];
         } @catch (NSException *exception) {
 #if DEBUG
             NSLog(@"%@", exception);
 #endif
-        } 
+        }
     }
     return [self sp_addConstraint:constraint];
 }
@@ -127,7 +127,7 @@
                 if ([self.subviews containsObject:constraint.firstItem] &&
                     [self.subviews containsObject:constraint.secondItem]) { // 两个对象是本视图的子视图
                     
-                    if (constraint.firstAttribute == constraint.secondAttribute) {                     
+                    if (constraint.firstAttribute == constraint.secondAttribute) {
                         if (constraint.firstAttribute == NSLayoutAttributeLeading || constraint.firstAttribute == NSLayoutAttributeLeft) {
                             [constraint.firstItem constraintsDicForView:constraint.secondItem][@"leading"] =
                             [constraint.secondItem constraintsDicForView:constraint.firstItem][@"leading"] = constraint;
@@ -155,7 +155,7 @@
                             [constraint.firstItem constraintsDicForView:constraint.secondItem][@"bottom_spacing"] =
                             [constraint.secondItem constraintsDicForView:constraint.firstItem][@"top_spacing"] = constraint;
                         }else{
-//                            NSLog(@"Has unknow problem!");
+                            //                            NSLog(@"Has unknow problem!");
                         }
                     }
                 }
@@ -163,7 +163,7 @@
             } // 约束的两个对象不是本视图
             if (owner == self)
                 break;
-
+            
             if ([self.subviews containsObject:owner]) {
                 switch (ownerAttribute) {
                     case NSLayoutAttributeTop:
@@ -183,12 +183,12 @@
                         [owner setBottomConstraint:constraint];
                         break;
                     default:
-//                        NSLog(@"Has unresolve problem!");
+                        //                        NSLog(@"Has unresolve problem!");
                         break;
                 }
             }else{
-//                NSLog(@"Not a problem!");
-            }   
+                //                NSLog(@"Not a problem!");
+            }
         } while (NO);
     }
 }
@@ -316,6 +316,47 @@
     return constraint;
 }
 
+- (NSLayoutConstraint *)centerXEqualToView:(UIView *)view {
+    NSMutableDictionary *dic = [self constraintsDicForView:view];
+    NSLayoutConstraint *constraint = dic[@"centerX"];
+    if (!constraint) {
+        if (self.translatesAutoresizingMaskIntoConstraints) {
+            self.translatesAutoresizingMaskIntoConstraints = NO;
+        }
+        constraint = [NSLayoutConstraint constraintWithItem:self
+                                                  attribute:(NSLayoutAttributeCenterX)
+                                                  relatedBy:(NSLayoutRelationEqual)
+                                                     toItem:view
+                                                  attribute:(NSLayoutAttributeCenterX)
+                                                 multiplier:1 constant:0];
+        [self.superview sp_addConstraint:constraint];
+        [view constraintsDicForView:self][@"centerX"] =
+        dic[@"centerX"] = constraint;
+    }
+    return constraint;
+}
+
+- (NSLayoutConstraint *)centerYEqualToView:(UIView *)view {
+    NSMutableDictionary *dic = [self constraintsDicForView:view];
+    NSLayoutConstraint *constraint = dic[@"centerY"];
+    if (!constraint) {
+        if (self.translatesAutoresizingMaskIntoConstraints) {
+            self.translatesAutoresizingMaskIntoConstraints = NO;
+        }
+        constraint = [NSLayoutConstraint constraintWithItem:self
+                                                  attribute:(NSLayoutAttributeCenterY)
+                                                  relatedBy:(NSLayoutRelationEqual)
+                                                     toItem:view
+                                                  attribute:(NSLayoutAttributeCenterY)
+                                                 multiplier:1 constant:0];
+        [self.superview sp_addConstraint:constraint];
+        [view constraintsDicForView:self][@"centerY"] =
+        dic[@"centerY"] = constraint;
+    }
+    return constraint;
+}
+
+
 
 - (NSLayoutConstraint *)leadingSpacingToView:(UIView *)view {
     NSMutableDictionary *dic = [self constraintsDicForView:view];
@@ -412,7 +453,7 @@
 #if DEBUG
             NSLog(@"%@", exception);
 #endif
-        }        
+        }
     }
     return [self sp_removeConstraint:constraint];
 }
@@ -423,7 +464,7 @@
 #endif
 
 - (void)removeMatchedPropertiesForConstraint:(NSLayoutConstraint *)constraint {
-        // Remove from property.
+    // Remove from property.
     if (constraint.firstAttribute == NSLayoutAttributeHeight) {
         if (constraint.firstItem != self ||
             constraint.secondItem != nil)
@@ -435,7 +476,7 @@
             return;
         self.widthConstraint = nil;
     }else {
-        do {            
+        do {
             UIView *owner = nil;
             NSLayoutAttribute ownerAttribute = 0;
             Class layoutClass = NSClassFromString(@"_UILayoutGuide"); // UIViewController利用LayoutGuide布局
@@ -477,7 +518,7 @@
                             [constraint.firstItem constraintsForOtherViews][[constraint.secondItem storedConstraintsKey]][@"bottom_spacing"] =
                             [constraint.secondItem constraintsForOtherViews][[constraint.firstItem storedConstraintsKey]][@"top_spacing"] = nil;
                         }else{
-//                            NSLog(@"Has unknow problem!");
+                            //                            NSLog(@"Has unknow problem!");
                         }
                     } // 两个属性不相同
                 } // 两个对象是本视图的子视图
@@ -504,12 +545,12 @@
                         [owner setBottomConstraint:nil];
                         break;
                     default:
-//                        NSLog(@"Has unresolve problem!");
+                        //                        NSLog(@"Has unresolve problem!");
                         break;
                 }
                 
             }else{
-//                NSLog(@"Not a problem!");
+                //                NSLog(@"Not a problem!");
             }
         } while (NO);
     }
@@ -522,10 +563,10 @@
 - (BOOL)recognizeConstraintToPropeties {
     return [objc_getAssociatedObject(self, "recognizeConstraintToPropeties") boolValue];
 }
-    // 宽度约束
+// 宽度约束
 - (NSLayoutConstraint *)widthConstraint {
 #if DEBUG
-//    NSParameterAssert(self.superview);
+    //    NSParameterAssert(self.superview);
 #endif
     NSLayoutConstraint *constraint = objc_getAssociatedObject(self, _cmd);
     if (!constraint) {
@@ -539,20 +580,20 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
-                                              attribute:(NSLayoutAttributeWidth)
-                                              relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:nil
-                                              attribute:(NSLayoutAttributeNotAnAttribute)
-                                             multiplier:1 constant:width];
+                                                                  attribute:(NSLayoutAttributeWidth)
+                                                                  relatedBy:(NSLayoutRelationEqual)
+                                                                     toItem:nil
+                                                                  attribute:(NSLayoutAttributeNotAnAttribute)
+                                                                 multiplier:1 constant:width];
     [self sp_addConstraint:constraint];
     self.widthConstraint = constraint;
     return constraint;
 }
 
-    // 高度约束
+// 高度约束
 - (NSLayoutConstraint *)heightConstraint {
 #if DEBUG
-//    NSParameterAssert(self.superview);
+    //    NSParameterAssert(self.superview);
 #endif
     NSLayoutConstraint *constraint = objc_getAssociatedObject(self, _cmd);
     if (!constraint) {
@@ -576,7 +617,7 @@
     return constraint;
 }
 
-    // 左边约束
+// 左边约束
 - (NSLayoutConstraint *)leftConstraint {
 #if DEBUG
     NSParameterAssert(self.superview);
@@ -618,11 +659,11 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
-                                              attribute:(NSLayoutAttributeTop)
-                                              relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:self.superview
-                                              attribute:(NSLayoutAttributeTop)
-                                             multiplier:1 constant:top];
+                                                                  attribute:(NSLayoutAttributeTop)
+                                                                  relatedBy:(NSLayoutRelationEqual)
+                                                                     toItem:self.superview
+                                                                  attribute:(NSLayoutAttributeTop)
+                                                                 multiplier:1 constant:top];
     [self.superview sp_addConstraint:constraint];
     self.topConstraint = constraint;
     return constraint;
@@ -644,11 +685,11 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.superview
-                                              attribute:(NSLayoutAttributeTrailing)
-                                              relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:self
-                                              attribute:(NSLayoutAttributeTrailing)
-                                             multiplier:1 constant:right];
+                                                                  attribute:(NSLayoutAttributeTrailing)
+                                                                  relatedBy:(NSLayoutRelationEqual)
+                                                                     toItem:self
+                                                                  attribute:(NSLayoutAttributeTrailing)
+                                                                 multiplier:1 constant:right];
     [self.superview sp_addConstraint:constraint];
     self.rightConstraint = constraint;
     return constraint;
@@ -671,11 +712,11 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.superview
-                                              attribute:(NSLayoutAttributeBottom)
-                                              relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:self
-                                              attribute:(NSLayoutAttributeBottom)
-                                             multiplier:1 constant:bottom];
+                                                                  attribute:(NSLayoutAttributeBottom)
+                                                                  relatedBy:(NSLayoutRelationEqual)
+                                                                     toItem:self
+                                                                  attribute:(NSLayoutAttributeBottom)
+                                                                 multiplier:1 constant:bottom];
     [self.superview sp_addConstraint:constraint];
     self.bottomConstraint = constraint;
     return constraint;
@@ -696,11 +737,11 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
-                                              attribute:(NSLayoutAttributeCenterX)
-                                              relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:self.superview
-                                              attribute:(NSLayoutAttributeCenterX)
-                                             multiplier:1 constant:centerX];
+                                                                  attribute:(NSLayoutAttributeCenterX)
+                                                                  relatedBy:(NSLayoutRelationEqual)
+                                                                     toItem:self.superview
+                                                                  attribute:(NSLayoutAttributeCenterX)
+                                                                 multiplier:1 constant:centerX];
     [self.superview sp_addConstraint:constraint];
     self.centerXConstraint = constraint;
     return constraint;
@@ -721,11 +762,11 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self
-                                              attribute:(NSLayoutAttributeCenterY)
-                                              relatedBy:(NSLayoutRelationEqual)
-                                                 toItem:self.superview
-                                              attribute:(NSLayoutAttributeCenterY)
-                                             multiplier:1 constant:centerY];
+                                                                  attribute:(NSLayoutAttributeCenterY)
+                                                                  relatedBy:(NSLayoutRelationEqual)
+                                                                     toItem:self.superview
+                                                                  attribute:(NSLayoutAttributeCenterY)
+                                                                 multiplier:1 constant:centerY];
     [self.superview sp_addConstraint:constraint];
     self.centerYConstraint = constraint;
     return constraint;
@@ -760,7 +801,7 @@
     objc_setAssociatedObject(self, @selector(centerYConstraint), centerYConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-    // Easily to get the constant of contraint.
+// Easily to get the constant of contraint.
 - (CGFloat)widthConstant {
     return self.widthConstraint.constant;
 }
@@ -786,7 +827,7 @@
     return self.centerYConstraint.constant;
 }
 
-    // Easily to set the constant of contraint.
+// Easily to set the constant of contraint.
 - (void)setWidthConstant:(CGFloat)widthConstant {
     NSLayoutConstraint *constraint = objc_getAssociatedObject(self, @selector(widthConstraint));
     if (!constraint) {
@@ -857,7 +898,7 @@
     if (recognizeConstraintToPropeties == self.recognizeConstraintToPropeties)
         return;
     
-    objc_setAssociatedObject(self, "recognizeConstraintToPropeties", recognizeConstraintToPropeties?@1:@0, OBJC_ASSOCIATION_RETAIN_NONATOMIC);    
+    objc_setAssociatedObject(self, "recognizeConstraintToPropeties", recognizeConstraintToPropeties?@1:@0, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

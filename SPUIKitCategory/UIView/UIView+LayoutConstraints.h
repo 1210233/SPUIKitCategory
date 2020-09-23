@@ -94,8 +94,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSLayoutConstraint *)widthEqualToView:(UIView *)view multiplier:(CGFloat)multiplier; // multiplier 比例 1表示相等
 - (NSLayoutConstraint *)heightEqualToView:(UIView *)view; // multiplier 默认 1
 - (NSLayoutConstraint *)heightEqualToView:(UIView *)view multiplier:(CGFloat)multiplier; // multiplier 比例 1表示相等
-
-
+- (NSLayoutConstraint *)centerXEqualToView:(UIView *)view;
+- (NSLayoutConstraint *)centerYEqualToView:(UIView *)view;
 
 /**
  本视图与另一视图view保持的距离。如果约束未设置则会自动创建(并让父视图调用addConstraint:使约束生效)。
