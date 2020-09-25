@@ -28,7 +28,7 @@ echo "//" >> $header
 echo "//  $header" >> $header
 echo "//  $pathname" >> $header
 echo "//" >> $header
-echo "//  Created by LSP on $d." >> $header
+echo "//  Updated by LSP on $d." >> $header
 echo "//  Copyright (c) $yyyy LSP. All rights reserved." >> $header
 echo "//" >> $header
 echo "" >> $header
