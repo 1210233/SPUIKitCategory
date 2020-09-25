@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-FOUNDATION_EXTERN CGFloat screenWidthScaleBase375();
+#import "UIView+SPFunctions.h"
 
 @interface UILabel (AutoScale)
 /**

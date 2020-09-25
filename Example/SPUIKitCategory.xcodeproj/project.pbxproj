@@ -21,6 +21,11 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		753D595B251D901C00672004 /* UITextField+SPDarkModeSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D595A251D901C00672004 /* UITextField+SPDarkModeSupport.m */; };
+		753D595E251D903200672004 /* UITextField+AutoScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D595D251D903200672004 /* UITextField+AutoScale.m */; };
+		753D5961251D926C00672004 /* UIView+SPFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D5960251D926C00672004 /* UIView+SPFunctions.m */; };
+		753D5964251D932200672004 /* UIFont+SPAutoScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D5963251D932200672004 /* UIFont+SPAutoScale.m */; };
+		753D5967251D97BC00672004 /* UITextView+AutoScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D5966251D97BC00672004 /* UITextView+AutoScale.m */; };
 		75A6AB5F244FE363006AEAE6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A6AB5C244FE363006AEAE6 /* ViewController.xib */; };
 		75A6AB60244FE363006AEAE6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A6AB5E244FE363006AEAE6 /* ViewController.m */; };
 		75A6AB63244FE46D006AEAE6 /* SPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A6AB62244FE46D006AEAE6 /* SPView.m */; };
@@ -82,6 +87,16 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73DE69C730854814C6929D2F /* Pods-SPUIKitCategory_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Tests/Pods-SPUIKitCategory_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		753D5959251D901C00672004 /* UITextField+SPDarkModeSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+SPDarkModeSupport.h"; sourceTree = "<group>"; };
+		753D595A251D901C00672004 /* UITextField+SPDarkModeSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+SPDarkModeSupport.m"; sourceTree = "<group>"; };
+		753D595C251D903200672004 /* UITextField+AutoScale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+AutoScale.h"; sourceTree = "<group>"; };
+		753D595D251D903200672004 /* UITextField+AutoScale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+AutoScale.m"; sourceTree = "<group>"; };
+		753D595F251D926C00672004 /* UIView+SPFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+SPFunctions.h"; sourceTree = "<group>"; };
+		753D5960251D926C00672004 /* UIView+SPFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPFunctions.m"; sourceTree = "<group>"; };
+		753D5962251D932200672004 /* UIFont+SPAutoScale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+SPAutoScale.h"; sourceTree = "<group>"; };
+		753D5963251D932200672004 /* UIFont+SPAutoScale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SPAutoScale.m"; sourceTree = "<group>"; };
+		753D5965251D97BC00672004 /* UITextView+AutoScale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+AutoScale.h"; sourceTree = "<group>"; };
+		753D5966251D97BC00672004 /* UITextView+AutoScale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AutoScale.m"; sourceTree = "<group>"; };
 		75A6AB5C244FE363006AEAE6 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		75A6AB5D244FE363006AEAE6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		75A6AB5E244FE363006AEAE6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -262,6 +277,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		753D5958251D901C00672004 /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				753D595C251D903200672004 /* UITextField+AutoScale.h */,
+				753D595D251D903200672004 /* UITextField+AutoScale.m */,
+				753D5959251D901C00672004 /* UITextField+SPDarkModeSupport.h */,
+				753D595A251D901C00672004 /* UITextField+SPDarkModeSupport.m */,
+			);
+			path = UITextField;
+			sourceTree = "<group>";
+		};
 		75CD42B52418CB38007EBFB7 /* SPUIKitCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +299,7 @@
 				75CD42D32418CB38007EBFB7 /* UIImage */,
 				75CD42EF2418CB38007EBFB7 /* UILabel */,
 				75CD42C22418CB38007EBFB7 /* UINib */,
+				753D5958251D901C00672004 /* UITextField */,
 				75CD42D02418CB38007EBFB7 /* UITextView */,
 				75CD42F92418CB38007EBFB7 /* UIView */,
 				75CD430F2418CB38007EBFB7 /* UIViewController */,
@@ -312,6 +339,8 @@
 		75CD42D02418CB38007EBFB7 /* UITextView */ = {
 			isa = PBXGroup;
 			children = (
+				753D5965251D97BC00672004 /* UITextView+AutoScale.h */,
+				753D5966251D97BC00672004 /* UITextView+AutoScale.m */,
 				75CD42D12418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.h */,
 				75CD42D22418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m */,
 			);
@@ -360,6 +389,8 @@
 				75CD43022418CB38007EBFB7 /* UIView+XIBCreation.m */,
 				75CD430C2418CB38007EBFB7 /* UIView+LayoutConstraints.h */,
 				75CD43032418CB38007EBFB7 /* UIView+LayoutConstraints.m */,
+				753D595F251D926C00672004 /* UIView+SPFunctions.h */,
+				753D5960251D926C00672004 /* UIView+SPFunctions.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -378,6 +409,8 @@
 			children = (
 				75CD434A241917FF007EBFB7 /* UIFont+FastCreate.h */,
 				75CD434B241917FF007EBFB7 /* UIFont+FastCreate.m */,
+				753D5962251D932200672004 /* UIFont+SPAutoScale.h */,
+				753D5963251D932200672004 /* UIFont+SPAutoScale.m */,
 			);
 			path = UIFont;
 			sourceTree = "<group>";
@@ -565,7 +598,10 @@
 			files = (
 				6003F59E195388D20070C39A /* SPAppDelegate.m in Sources */,
 				75CD434C241917FF007EBFB7 /* UIFont+FastCreate.m in Sources */,
+				753D5964251D932200672004 /* UIFont+SPAutoScale.m in Sources */,
 				75CD431C2418CB38007EBFB7 /* UINib+FastCreate.m in Sources */,
+				753D595B251D901C00672004 /* UITextField+SPDarkModeSupport.m in Sources */,
+				753D5967251D97BC00672004 /* UITextView+AutoScale.m in Sources */,
 				75CD433B2418CB39007EBFB7 /* UIView+LayoutConstraints.m in Sources */,
 				75CD432C2418CB39007EBFB7 /* UIButton+AutoScale.m in Sources */,
 				75A6AB63244FE46D006AEAE6 /* SPView.m in Sources */,
@@ -574,6 +610,7 @@
 				75CD433C2418CB39007EBFB7 /* UIView+Nib.m in Sources */,
 				75CD434324190D4C007EBFB7 /* UIColor+SPCreate.m in Sources */,
 				75CD43192418CB38007EBFB7 /* UIControl+TouchHighlightEffect.m in Sources */,
+				753D595E251D903200672004 /* UITextField+AutoScale.m in Sources */,
 				75CD4349241916D0007EBFB7 /* UIButton+Loading.m in Sources */,
 				75CD434624191399007EBFB7 /* UIImage+ValidSize.m in Sources */,
 				75CD43312418CB39007EBFB7 /* UILabel+AutoLayoutFitSize.m in Sources */,
@@ -584,6 +621,7 @@
 				75CD435024193A45007EBFB7 /* UIWindow+KeyWindow.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				75CD432F2418CB39007EBFB7 /* UILabel+AutoScale.m in Sources */,
+				753D5961251D926C00672004 /* UIView+SPFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +704,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../$(PROJECT_NAME)/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -699,6 +738,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../$(PROJECT_NAME)/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

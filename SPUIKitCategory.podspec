@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'SPUIKitCategory'
-    s.version          = '1.4.5'
+    s.version          = '1.5.0'
     s.summary          = 'SPUIKitCategory是UIKit的分类的集合'
     s.description      = <<-DESC
     SPUIKitCategory是UIKit的分类 的集合
@@ -44,11 +44,14 @@ Pod::Spec.new do |s|
     
     s.subspec 'UILabel' do |ss|
         ss.dependency 'SPUIKitCategory/UIView'
+        ss.dependency 'SPUIKitCategory/UIFont'
         ss.source_files = 'SPUIKitCategory/UILabel/*.{h,m}'
         ss.public_header_files = 'SPUIKitCategory/UILabel/*.h'
     end
     
     s.subspec 'UITextField' do |ss|
+    ss.dependency 'SPUIKitCategory/UIView'
+    ss.dependency 'SPUIKitCategory/UIFont'
         ss.source_files = 'SPUIKitCategory/UITextField/*.{h,m}'
         ss.public_header_files = 'SPUIKitCategory/UITextField/*.h'
     end
@@ -87,6 +90,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'UITextView' do |ss|
         ss.dependency 'SPUIKitCategory/UIView'
+        ss.dependency 'SPUIKitCategory/UIFont'
         ss.source_files = 'SPUIKitCategory/UITextView/*.{h,m}'
         ss.public_header_files = 'SPUIKitCategory/UITextView/*.h'
     end

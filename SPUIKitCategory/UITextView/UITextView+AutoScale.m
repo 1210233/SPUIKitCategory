@@ -1,17 +1,16 @@
 //
-//  UILabel+AutoScale.m
-//  SmartCity
+//  UITextView+AutoScale.m
+//  SPUIKitCategory_Example
 //
-//  Created by ZCGC on 2017/8/22.
-//  Copyright © 2017年 NRH. All rights reserved.
+//  Created by LSP on 2020/9/25.
+//  Copyright © 2020 1210233. All rights reserved.
 //
 
-#import "UILabel+AutoScale.h"
+#import "UITextView+AutoScale.h"
 #import "UIFont+SPAutoScale.h"
 #import <objc/runtime.h>
 
-
-@implementation UILabel (AutoScale)
+@implementation UITextView (AutoScale)
 
 + (void)load{
     NSArray *originalSelectors = @[@"setFont:"];
