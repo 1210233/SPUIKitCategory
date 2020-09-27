@@ -10,7 +10,11 @@
 
 @implementation UIImage (ValidSize)
 
--(NSData *)dataInValidSize{
+- (NSData *)dataIn400KB {
+    return [self dataInFileSize:400 * 1024];
+}
+
+- (NSData *)dataInFileSize:(NSUInteger)bytes {
     UIImage *img = self;
     int width  = self.size.width;
     int height = self.size.height;
@@ -40,7 +44,7 @@
             @autoreleasepool{
                 data = UIImageJPEGRepresentation(img, (quality -= .05));
             }
-        } while (data.length > 400/*KB*/ * 1024/*Byte*/ && quality > 0);
+        } while (data.length > bytes && quality > 0);
         
     }while (quality < 0 && limit > 0);
     
@@ -50,7 +54,7 @@
         return data;
 }
 
-- (CGSize)validSize{
+- (CGSize)validSize {
     CGFloat width  = self.size.width;
     CGFloat height = self.size.height;
     if (width > 1500 || height > 1500) {
@@ -67,8 +71,7 @@
     }
 }
 
-- (UIImage*)scaledToSize:(CGSize)newSize
-{
+- (UIImage*)scaledToSize:(CGSize)newSize {
     UIGraphicsBeginImageContext(newSize);
     [self drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
