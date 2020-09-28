@@ -2,7 +2,7 @@
 //  SPUIKitCategory.h
 //  SPUIKitCategory
 //
-//  Updated by LSP on 2020/09/25.
+//  Updated by LSP on 2020/09/28.
 //  Copyright (c) 2020年 LSP. All rights reserved.
 //
 
@@ -30,6 +30,7 @@
 #import "UIView+Nib.h"
 #import "UIView+SPDarkModeSupport.h"
 #import "UIView+SPFunctions.h"
+#import "UIView+Snapshot.h"
 #import "UIView+XIBCreation.h"
 #import "UIViewController+XIBCreation.h"
 #import "UIWindow+KeyWindow.h"
