@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (Snapshot)
-- (UIImage *)snapshot;
+- (UIImage *)snapImage;
 @end
 
 @interface CALayer (Snapshot)
-- (UIImage *)snapshot;
+- (UIImage *)snapImage;
 @end
 
 

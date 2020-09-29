@@ -21,6 +21,8 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		7519B4472522C533008769FA /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 7519B4452522C533008769FA /* UIView+Snapshot.m */; };
+		7519B4482522C533008769FA /* UIView+SPDarkModeSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7519B4462522C533008769FA /* UIView+SPDarkModeSupport.m */; };
 		753D595B251D901C00672004 /* UITextField+SPDarkModeSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D595A251D901C00672004 /* UITextField+SPDarkModeSupport.m */; };
 		753D595E251D903200672004 /* UITextField+AutoScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D595D251D903200672004 /* UITextField+AutoScale.m */; };
 		753D5961251D926C00672004 /* UIView+SPFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 753D5960251D926C00672004 /* UIView+SPFunctions.m */; };
@@ -87,6 +89,10 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73DE69C730854814C6929D2F /* Pods-SPUIKitCategory_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPUIKitCategory_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SPUIKitCategory_Tests/Pods-SPUIKitCategory_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7519B4432522C532008769FA /* UIView+SPDarkModeSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPDarkModeSupport.h"; sourceTree = "<group>"; };
+		7519B4442522C532008769FA /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
+		7519B4452522C533008769FA /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
+		7519B4462522C533008769FA /* UIView+SPDarkModeSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPDarkModeSupport.m"; sourceTree = "<group>"; };
 		753D5959251D901C00672004 /* UITextField+SPDarkModeSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+SPDarkModeSupport.h"; sourceTree = "<group>"; };
 		753D595A251D901C00672004 /* UITextField+SPDarkModeSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+SPDarkModeSupport.m"; sourceTree = "<group>"; };
 		753D595C251D903200672004 /* UITextField+AutoScale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+AutoScale.h"; sourceTree = "<group>"; };
@@ -383,6 +389,10 @@
 		75CD42F92418CB38007EBFB7 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				7519B4442522C532008769FA /* UIView+Snapshot.h */,
+				7519B4452522C533008769FA /* UIView+Snapshot.m */,
+				7519B4432522C532008769FA /* UIView+SPDarkModeSupport.h */,
+				7519B4462522C533008769FA /* UIView+SPDarkModeSupport.m */,
 				75CD42FA2418CB38007EBFB7 /* UIView+Nib.h */,
 				75CD43072418CB38007EBFB7 /* UIView+Nib.m */,
 				75CD430D2418CB38007EBFB7 /* UIView+XIBCreation.h */,
@@ -596,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7519B4482522C533008769FA /* UIView+SPDarkModeSupport.m in Sources */,
 				6003F59E195388D20070C39A /* SPAppDelegate.m in Sources */,
 				75CD434C241917FF007EBFB7 /* UIFont+FastCreate.m in Sources */,
 				753D5964251D932200672004 /* UIFont+SPAutoScale.m in Sources */,
@@ -617,6 +628,7 @@
 				75CD43212418CB38007EBFB7 /* UITextView+AutoLayoutFitSize.m in Sources */,
 				75A6AB60244FE363006AEAE6 /* ViewController.m in Sources */,
 				75CD433A2418CB39007EBFB7 /* UIView+XIBCreation.m in Sources */,
+				7519B4472522C533008769FA /* UIView+Snapshot.m in Sources */,
 				6003F5A7195388D20070C39A /* SPViewController.m in Sources */,
 				75CD435024193A45007EBFB7 /* UIWindow+KeyWindow.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,

@@ -9,32 +9,16 @@
 #import "UIView+Snapshot.h"
 
 @implementation UIView (Snapshot)
-- (UIImage *)snapshot{
-    //支持retina高分的关键
-    if(/* DISABLES CODE */ (&UIGraphicsBeginImageContextWithOptions) != NULL)
-    {
-        UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);
-    } else {
-        UIGraphicsBeginImageContext(self.frame.size);
-    }
-
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;
+- (UIImage *)snapImage {
+    return [self.layer snapImage];
 }
 @end
 
 
 @implementation CALayer (Snapshot)
 
-- (UIImage *)snapshot{
-    if(/* DISABLES CODE */ (&UIGraphicsBeginImageContextWithOptions) != NULL)
-    {
-        UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);
-    } else {
-        UIGraphicsBeginImageContext(self.frame.size);
-    }
+- (UIImage *)snapImage {
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, [UIScreen mainScreen].scale);
     
     [self renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();

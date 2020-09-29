@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (ValidSize)
-- (NSData *)dataIn400KB;
 
-- (NSData *)dataInFileSize:(NSUInteger)bytes;
+- (NSData *)dataIn32KB;
+- (NSData *)dataIn400KB;
+- (NSData *)dataInKB:(NSUInteger)KB;
+- (NSData *)dataInMB:(NSUInteger)MB;
+- (NSData *)dataInBytes:(NSUInteger)bytes;
+
 
 - (CGSize)validSize;
 

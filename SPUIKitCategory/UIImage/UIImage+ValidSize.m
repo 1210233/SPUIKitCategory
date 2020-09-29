@@ -10,11 +10,19 @@
 
 @implementation UIImage (ValidSize)
 
-- (NSData *)dataIn400KB {
-    return [self dataInFileSize:400 * 1024];
+- (NSData *)dataIn32KB {
+    return [self dataInKB:32];
 }
-
-- (NSData *)dataInFileSize:(NSUInteger)bytes {
+- (NSData *)dataIn400KB {
+    return [self dataInKB:400];
+}
+- (NSData *)dataInKB:(NSUInteger)KB {
+    return [self dataInBytes:KB * 1024];
+}
+- (NSData *)dataInMB:(NSUInteger)MB {
+    return [self dataInKB:MB * 1024];
+}
+- (NSData *)dataInBytes:(NSUInteger)bytes {
     UIImage *img = self;
     int width  = self.size.width;
     int height = self.size.height;
