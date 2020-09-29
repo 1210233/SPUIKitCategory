@@ -12,13 +12,20 @@
 - (UIImage *)snapImage {
     return [self.layer snapImage];
 }
+- (UIImage *)snapImage:(BOOL)opaque {
+    return [self.layer snapImage:opaque];
+}
 @end
 
 
 @implementation CALayer (Snapshot)
 
 - (UIImage *)snapImage {
-    UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, [UIScreen mainScreen].scale);
+    return [self snapImage:NO];
+}
+
+- (UIImage *)snapImage:(BOOL)opaque {
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, opaque, 0);
     
     [self renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();

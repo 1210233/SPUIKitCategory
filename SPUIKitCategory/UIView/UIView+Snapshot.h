@@ -10,10 +10,12 @@
 
 @interface UIView (Snapshot)
 - (UIImage *)snapImage;
+- (UIImage *)snapImage:(BOOL)opaque;
 @end
 
 @interface CALayer (Snapshot)
 - (UIImage *)snapImage;
+- (UIImage *)snapImage:(BOOL)opaque;
 @end
 
 
