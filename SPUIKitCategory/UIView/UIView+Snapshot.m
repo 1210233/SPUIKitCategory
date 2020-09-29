@@ -25,7 +25,13 @@
 }
 
 - (UIImage *)snapImage:(BOOL)opaque {
-    UIGraphicsBeginImageContextWithOptions(self.frame.size, opaque, 0);
+    
+    if(/* DISABLES CODE */ (&UIGraphicsBeginImageContextWithOptions) != NULL)
+    {
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, opaque, 0.0);
+    } else {
+        UIGraphicsBeginImageContext(self.frame.size);
+    }
     
     [self renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
