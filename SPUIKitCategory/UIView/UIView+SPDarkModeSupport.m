@@ -111,7 +111,7 @@
 
 - (UIColor *)superBackgroundColor {
     UIColor *color = objc_getAssociatedObject(self, @selector(superBackgroundColor));
-    if (!color) {
+    if (!color && self.sameBackgroundColorWithSuperview) {
         color = self.superview.superBackgroundColor;
     }
     if (!color) {
