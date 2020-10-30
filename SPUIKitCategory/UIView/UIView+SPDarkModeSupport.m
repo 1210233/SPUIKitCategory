@@ -12,30 +12,31 @@
 @implementation UIView (SPDarkModeSupport)
 
 + (void)load{
-    NSArray *originalSelectors = @[@"setBackgroundColor:",
-                                   @"didMoveToSuperview" //,
+    NSArray *originalSelectors = @[@"setBackgroundColor:"
+                                   , @"addSubview:"
+                                   , @"didMoveToSuperview"
                                    //@"traitCollectionDidChange:"
                                    ];
-    
+
     for (NSString *selectorName in originalSelectors) {
         SEL originalSelector = NSSelectorFromString(selectorName);
         SEL swizzledSelector = NSSelectorFromString([@"sp_" stringByAppendingString:selectorName]);
-        
+
         Method originalMethod = class_getInstanceMethod(self, originalSelector);
         Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
-        
+
         BOOL didAddMethod =
         class_addMethod(self,
                         originalSelector,
                         method_getImplementation(swizzledMethod),
                         method_getTypeEncoding(swizzledMethod));
-        
+
         if (didAddMethod) {
             class_replaceMethod(self,
                                 swizzledSelector,
                                 method_getImplementation(originalMethod),
                                 method_getTypeEncoding(originalMethod));
-            
+
         } else {
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
@@ -44,7 +45,8 @@
 
 #pragma mark - Swizzle Methods
 - (void)sp_setBackgroundColor:(UIColor *)color {
-    
+    self.originalBackgroundColor = color;
+
     if (@available(iOS 13.0, *)) {
         UIColor *night = [self darkModeBackgroundColor];
         if (night) {
@@ -61,33 +63,30 @@
             color = night;
         }
     }
-    
-    
-    if (self.sameBackgroundColorWithSuperview) {
-        [self setSameColorToSubviews:color];
-        if (self.backgroundColor == [UIColor clearColor]) {
-            return [self sp_setBackgroundColor:[UIColor clearColor]];
-        }else{
-            return [self sp_setBackgroundColor:color];
-        }
-    }else{
-        return [self sp_setBackgroundColor:color];
-    }
-}
 
+
+    [self setSuperBackgroundColorToSubviews:color];
+    return [self sp_setBackgroundColor:color];
+}
 - (void)sp_didMoveToSuperview {
     if (self.superview) {
         if (self.sameBackgroundColorWithSuperview) {
-            UIColor *color = self.superview.superBackgroundColor;
-            if (self.backgroundColor != [UIColor clearColor]) {
-                [self sp_setBackgroundColor:color];
-            }
-            [self setSameColorToSubviews:color];
+            [self setSuperBackgroundColor:self.superBackgroundColor];
         }
     }
     return [self sp_didMoveToSuperview];
 }
+- (void)sp_addSubview:(UIView *)view {
+    [view setSuperBackgroundColor:self.backgroundColor];
+    return [self sp_addSubview:view];
+}
 
+#pragma mark - Function Methods
+- (void)setSuperBackgroundColorToSubviews:(UIColor *)color {
+    for (UIView *subview in self.subviews) {
+        [subview setSuperBackgroundColor:color];
+    }
+}
 
 #pragma mark - Setters & Getters
 #pragma mark sameBackgroundColorWithSuperview
@@ -97,21 +96,32 @@
 
 - (void)setSameBackgroundColorWithSuperview:(BOOL)sameBackgroundColorWithSuperview {
     objc_setAssociatedObject(self, @selector(sameBackgroundColorWithSuperview), @(sameBackgroundColorWithSuperview), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
+
     if (sameBackgroundColorWithSuperview) {
-        self.backgroundColor = self.superBackgroundColor;
+        UIColor *origin = self.originalBackgroundColor;
+        [self setBackgroundColor:self.superBackgroundColor];
+        self.originalBackgroundColor = origin;
+
+    }else{
+        [self setBackgroundColor:self.originalBackgroundColor];
     }
 }
 
 
 #pragma mark superBackgroundColor
 - (void)setSuperBackgroundColor:(UIColor *)color {
-    objc_setAssociatedObject(self, @selector(superBackgroundColor), color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (self.sameBackgroundColorWithSuperview) {
+        UIColor *origin = self.originalBackgroundColor;
+        [self setBackgroundColor:color];
+        self.originalBackgroundColor = origin;
+
+        [self setSuperBackgroundColorToSubviews:color];
+    }
 }
 
 - (UIColor *)superBackgroundColor {
-    UIColor *color = objc_getAssociatedObject(self, @selector(superBackgroundColor));
-    if (!color && self.sameBackgroundColorWithSuperview) {
+    UIColor *color = nil;
+    if (self.sameBackgroundColorWithSuperview) {
         color = self.superview.superBackgroundColor;
     }
     if (!color) {
@@ -127,6 +137,14 @@
     return color;
 }
 
+- (UIColor *)originalBackgroundColor {
+    return objc_getAssociatedObject(self, @selector(originalBackgroundColor));
+}
+
+- (void)setOriginalBackgroundColor:(UIColor * _Nonnull)originalBackgroundColor {
+    objc_setAssociatedObject(self, @selector(originalBackgroundColor), originalBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 #pragma mark darkModeBackgroundColor
 - (UIColor *)darkModeBackgroundColor {
@@ -134,8 +152,8 @@
 }
 
 - (void)setDarkModeBackgroundColor:(UIColor *)darkModeBackgroundColor {
-    objc_setAssociatedObject(self, @selector(darkModeBackgroundColor), darkModeBackgroundColor, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    
+    objc_setAssociatedObject(self, @selector(darkModeBackgroundColor), darkModeBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
     UIColor *normal = self.backgroundColor;
     UIColor *color = normal;
     if (@available(iOS 13.0, *)) {
@@ -153,19 +171,10 @@
     return [self sp_setBackgroundColor:color];
 }
 
-#pragma mark - Function Methods
-- (void)setSameColorToSubviews:(UIColor *)color {
-    for (UIView *subview in self.subviews) {
-        if (subview.sameBackgroundColorWithSuperview) {
-            subview.backgroundColor = color;
-            [subview setSuperBackgroundColor:color];
-        }
-    }
-}
-
-- (void)sp_traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-//    self.layer.color
-    return [self sp_traitCollectionDidChange:previousTraitCollection];
-}
+//
+//- (void)sp_traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+////    self.layer.color
+//    return [self sp_traitCollectionDidChange:previousTraitCollection];
+//}
 
 @end

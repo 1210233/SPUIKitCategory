@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIView (SPDarkModeSupport)
 @property (nonatomic, copy) IBInspectable UIColor *darkModeBackgroundColor API_AVAILABLE(ios(12.0));
 @property (nonatomic, readonly, copy) UIColor *superBackgroundColor;
+@property (nonatomic, readonly, copy) UIColor *originalBackgroundColor;
 @property (nonatomic, assign) IBInspectable BOOL sameBackgroundColorWithSuperview;
 @end
 
