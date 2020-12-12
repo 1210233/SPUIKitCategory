@@ -7,38 +7,6 @@
 
 import Foundation
 
-// 放在AppDelegate中
-#if NEVER_COMPILE
-/// 定义 `protocol`
-public protocol PRExchangeMethod: class {
-    static func exchange()
-}
-/*
- // 在AppDelegate中实现
- static func harmlessFunction() {
-     let typeCount = Int(objc_getClassList(nil, 0))
-     let  types = UnsafeMutablePointer<AnyClass>.allocate(capacity: typeCount)
-     let autoreleaseintTypes = AutoreleasingUnsafeMutablePointer<AnyClass>(types)
-     objc_getClassList(autoreleaseintTypes, Int32(typeCount)) //获取所有的类
- 
-     for index in 0 ..< typeCount {
-         if let cls = types[index] as? PRExchangeMethod.Type {
-         cls.exchange()
-     }
- }
- types.deallocate()
- }
- */
-#endif
-
-
-// 放在需要交换方法的文件中
-#if !PRExchangeMethod
-/// 定义 `protocol`
-public protocol PRExchangeMethod: class {
-    static func exchange()
-}
-#endif
 
 extension UIView: PRExchangeMethod {
     
