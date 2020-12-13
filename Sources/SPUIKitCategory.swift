@@ -10,20 +10,23 @@ import UIKit
 // 放在需要交换方法的文件中
 #if !PRExchangeMethod
 /// 定义 `protocol`
-//public protocol PRExchangeMethod: class {
-//    static func exchangeMethodNames() -> [String]?
-//    static func exchangeMethodPrefix() -> String? // Default is "sp_"
-//}
+public protocol PRExchangeMethod: class {
+    static func exchangeMethodNames() -> [String]?
+    static func exchangeMethodPrefix() -> String? // Default is "sp_"
+}
 #endif
 
 
 // 放在AppDelegate中
 #if NEVER_COMPILE
+
+#if PRExchangeMethod // 在other swift flags中添加 -D PRExchangeMethod
 /// 定义 `protocol`
 public protocol PRExchangeMethod: class {
     static func exchangeMethodNames() -> [String]?
     static func exchangeMethodPrefix() -> String? // Default is "sp_"
 }
+#endif
 
 extension AppDelegate {
     
