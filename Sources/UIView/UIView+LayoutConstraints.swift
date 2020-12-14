@@ -195,6 +195,17 @@ extension UIView {
         return cons!
     }
     
+    
+    /**
+     本视图与另一视图view保持的距离。如果约束未设置则会自动创建(并让父视图调用addConstraint:使约束生效)。
+     leadingSpacingToView:  视图的左边与view的右边保持的距离，设置constant则为本视图的左边与view的右边所保持的距离。
+     trailingSpacingToView: 视图的右边与view的左边保持的距离，设置constant则为本视图的右边与view的左边所保持的距离。
+     topSpacingToView:      视图的顶部与view的底部保持的距离，设置constant则为本视图的顶部与view的底部所保持的距离。
+     bottomSpacingToView:   视图的底部与view的顶部保持的距离，设置constant则为本视图的底部与view的顶部所保持的距离。
+     
+     @param view 被参照的视图。
+     @return 所约束两个视图的约束对象。
+     */
     func leadingSpacingTo(view: UIView) -> NSLayoutConstraint {
         var dic = self.constraintsDicFor(view: view)
         var cons = dic["left_spacing"] as? NSLayoutConstraint
@@ -246,7 +257,7 @@ extension UIView {
         return cons!
     }
     
-    func centerYEqualTo(view: UIView) -> NSLayoutConstraint {
+    func bottomSpacingTo(view: UIView) -> NSLayoutConstraint {
         var dic = self.constraintsDicFor(view: view)
         var cons = dic["bottom_spacing"] as? NSLayoutConstraint
         if cons == nil {
