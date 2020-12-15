@@ -20,9 +20,10 @@ public protocol PRExchangeMethod: class {
 // 放在AppDelegate中
 #if NEVER_COMPILE
 
-#if PRExchangeMethod // 在other swift flags中添加 -D PRExchangeMethod
+#if PRExchangeMethodFlag // 在other swift flags中添加 -D PRExchangeMethodFlag
 /// 定义 `protocol`
-public protocol PRExchangeMethod: class {
+public
+protocol PRExchangeMethod: class {
     static func exchangeMethodNames() -> [String]?
     static func exchangeMethodPrefix() -> String? // Default is "sp_"
 }
@@ -48,7 +49,7 @@ extension AppDelegate {
             let prefix = cls.exchangeMethodPrefix() ?? "sp_"
             
             #if DEBUG // 打印类名
-                print("\(cls)")
+                print("----------\(cls)----------")
             #endif
             
             guard let names = cls.exchangeMethodNames(), !names.isEmpty else {
@@ -56,14 +57,14 @@ extension AppDelegate {
             }
             
             for name in names {
-                print("----------[\(cls) "  + name + "]")
+                print("[\(cls) "  + name + "] to [\(cls) " + prefix + name + "]")
                 
                 let originalSelector = Selector(name);
                 let swizzledSelector = Selector(prefix + name)
                 
                 guard let originalMethod = class_getInstanceMethod(cls, originalSelector) else {
                     #if DEBUG
-                    print("Method(" + name + ") not found for \(class_getName(cls))")
+                    print("Method(" + name + ") not found for \(cls)")
                     #endif
                     continue
                 }
@@ -94,7 +95,7 @@ extension AppDelegate {
         }
         types.deallocate()
         #if DEBUG // 打印类名
-            print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=====================\n结束方法交换。")
+            print("结束方法交换。\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=====================")
         #endif
         return self.application(application, didFinishLaunchingWithOptions:launchOptions)
     }

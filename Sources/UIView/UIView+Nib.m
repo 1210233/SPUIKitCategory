@@ -10,23 +10,6 @@
 
 @implementation UIView (SPNib)
 
-+ (UINib *)loadNib
-{
-    return [self loadNibNamed:NSStringFromClass([self class])];
-}
-
-+ (UINib *)loadNibNamed:(NSString*)nibName
-{
-    return [self loadNibNamed:nibName bundle:[NSBundle mainBundle]];
-}
-
-+ (UINib *)loadNibNamed:(NSString*)nibName bundle:(NSBundle *)bundle
-{
-    return [UINib nibWithNibName:nibName bundle:bundle];
-}
-
-
-
 #pragma mark ------ XIB INSPECTABLE ------
 - (void)setCornerRadius:(CGFloat)cornerRadius {
     self.layer.cornerRadius = cornerRadius;
