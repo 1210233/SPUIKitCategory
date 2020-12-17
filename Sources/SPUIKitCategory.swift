@@ -26,7 +26,8 @@ public protocol PRExchangeMethod: class {
 /// 定义 `protocol`
 //@objc
 public protocol PRExchangeMethod: class {
-//    @objc optional
+    //    @objc optional
+    //    static func ExchangeMethodNames()
     static func exchangeMethodPrefix() -> String? // Default is "sp_"
 }
 #endif
@@ -38,20 +39,26 @@ extension AppDelegate {
         print("----------\(cls)----------")
         #endif
         let prefix = cls.exchangeMethodPrefix() ?? "sp_"
-        
         var cnt = UInt32()
         var names = [String]()
-        if let list = class_copyMethodList(cls, &cnt) {
-            for i in 0 ..< cnt {
-                let method = list[Int(i)]
-                names.append(String(describing: method_getName(method)))
+        if let c = cls as? NSObject.Type, let pts = class_copyPropertyList(cls, &cnt) {
+            for i in 0 ..< Int(cnt) {
+                let name = String(cString:property_getName(pts[i]))
+                guard name.hasSuffix("ExchangeMethodNames") else {
+                    continue
+                }
+                
+                if let arr = c.init().perform(Selector(name)) {
+                    
+                    if let array = arr.takeUnretainedValue() as? [String] {
+                        names += array
+                    }
+                    //                    arr.release()
+                }
             }
         }
-//            print(names)
-//            guard let names = cls.exchangeMethodNames(), !names.isEmpty else {
-//                continue
-//            }
-            names = []
+        
+        //        names = []
         for name in names {
             print("[\(cls) "  + name + "] to [\(cls) " + prefix + name + "]")
             
@@ -89,6 +96,7 @@ extension AppDelegate {
             }
         }
     }
+
     @_dynamicReplacement(for:application(_:didFinishLaunchingWithOptions:))
     func sp_application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         #if DEBUG // 打印类名

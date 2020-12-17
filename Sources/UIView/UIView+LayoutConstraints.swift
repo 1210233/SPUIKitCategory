@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+@objc
 extension UIView {
     
     var constraintsForOtherViews: NSMutableDictionary {
