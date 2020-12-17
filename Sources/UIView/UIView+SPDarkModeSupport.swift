@@ -19,7 +19,10 @@ extension UIView: PRExchangeMethod {
     public static func exchangeMethodPrefix() -> String? {
         return nil
     }
-    
+    public func sp_setBackgroundColor(_ color: UIColor) {
+        self.backgroundColor = nil
+        self.sp_setBackgroundColor(UIColor.red)
+    }
 //    @available(iOS 12.0, *)
     var darkModeBackgroundColor: UIColor? {
         get {
