@@ -10,38 +10,20 @@ import UIKit
 
 @objc // 必需在拓展前或属性前加上@objc，否则class_copyPropertyList方法读取不到下面的属性
 extension UIView: PRExchangeMethod {
+    
+    public static var exchangeMethodPrefix: String?
+    
+    /// 需要交换的方法名
     var darkModeSupportExchangeMethodNames: [String] {
-        return ["setBackgroundColor:",
-                "addSubview:",
-                "didMoveToSuperview"]
-        
-    }
-    
-    public static func exchangeMethodPrefix() -> String? {
-        return nil
-    }
-    
-    public func sp_setBackgroundColor(_ color: UIColor) {
-        return self.sp_setBackgroundColor(color)
-    }
-    
-    func sp_addSubview(_ view: UIView) {
-        if let color = self.backgroundColor {
-            view.superBackgroundColor = color
-        }
-        return self.sp_addSubview(view)
-    }
-    
-    func sp_didMoveToSuperview() {
-        if self.superview != nil {
-            if self.sameBackgroundColorWithSuperview {
-                let color = self.superBackgroundColor
-                self.superBackgroundColor = color
-            }
+        get {
+            return ["setBackgroundColor:",
+                    "addSubview:",
+                    "didMoveToSuperview"]
         }
     }
     
-//    @available(iOS 12.0, *)
+    /// 深色模式下的背景颜色
+    public
     var darkModeBackgroundColor: UIColor? {
         get {
             return objc_getAssociatedObject(self, "darkModeBackgroundColor") as? UIColor
@@ -69,13 +51,8 @@ extension UIView: PRExchangeMethod {
         }
     }
     
-    func setSuperBackgroundColorToSubviews(_ color: UIColor) {
-        for subview in self.subviews {
-            subview.superBackgroundColor = color
-        }
-    }
-    
-//    @property (nonatomic, copy) IBInspectable UIColor *darkModeBackgroundColor API_AVAILABLE(ios(12.0));
+    /// 父视图的背景颜色
+    public
     var superBackgroundColor: UIColor {
         get {
             var color: UIColor?
@@ -105,6 +82,9 @@ extension UIView: PRExchangeMethod {
             }
         }
     }
+    
+    /// 深色模式之前的颜色
+    public
     var originalBackgroundColor: UIColor? {
         get {
             if let color = objc_getAssociatedObject(self, "originalBackgroundColor") as? UIColor {
@@ -116,6 +96,9 @@ extension UIView: PRExchangeMethod {
             objc_setAssociatedObject(self, "originalBackgroundColor", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
+    /// 保持背景颜色与父视图相同
+    public
     var sameBackgroundColorWithSuperview: Bool {
         get {
             if let value = objc_getAssociatedObject(self, "sameBackgroundColorWithSuperview") as? NSNumber {
@@ -133,6 +116,52 @@ extension UIView: PRExchangeMethod {
             }else {
                 self.backgroundColor = self.originalBackgroundColor
             }
+        }
+    }
+    
+    func sp_setBackgroundColor(_ color: UIColor) {
+        self.originalBackgroundColor = color
+        var temp = color
+        if #available(iOS 13.0, *) {
+            if let night = self.darkModeBackgroundColor {
+                temp = UIColor(dynamicProvider: { (collection) -> UIColor in
+                    if collection.userInterfaceStyle == .dark {
+                        return night
+                    }
+                    return color.resolvedColor(with: collection)
+                })
+            }
+        } else if #available(iOS 12.0, *) {
+            if let night = self.darkModeBackgroundColor, let window = UIApplication.shared.delegate?.window {
+                if let w = window, w.traitCollection.userInterfaceStyle == .dark {
+                    temp = night
+                }
+            }
+        }
+        
+        self.setSuperBackgroundColorToSubviews(temp)
+        return self.sp_setBackgroundColor(temp)
+    }
+    
+    func sp_addSubview(_ view: UIView) {
+        if let color = self.backgroundColor {
+            view.superBackgroundColor = color
+        }
+        return self.sp_addSubview(view)
+    }
+    
+    func sp_didMoveToSuperview() {
+        if self.superview != nil {
+            if self.sameBackgroundColorWithSuperview {
+                let color = self.superBackgroundColor
+                self.superBackgroundColor = color
+            }
+        }
+    }
+    
+    func setSuperBackgroundColorToSubviews(_ color: UIColor) {
+        for subview in self.subviews {
+            subview.superBackgroundColor = color
         }
     }
 }
