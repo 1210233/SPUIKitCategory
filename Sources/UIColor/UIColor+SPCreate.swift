@@ -101,6 +101,7 @@ extension UIColor {
         }
     }
     
+    /// r.g.b.a RRRGGGBBB eg:23056098 -> r=23 g=56 b=98
     convenience
     init(RGB rgb: UInt, alpha: CGFloat = 1) {
         let red = CGFloat((rgb / 1000 / 1000) % 1000);
@@ -109,8 +110,11 @@ extension UIColor {
         self.init(red: CGFloat(red) / 999, green: CGFloat(green) / 999, blue: CGFloat(blue) / 999, alpha: alpha)
     }
     
+    /**
+     * @param color can be 0xAABBCC or 0XAABBCC, and or #AABBCC
+     */
     convenience
-    init(hexString string: String) {
+    init(hexString string: String, alpha: CGFloat = 1) {
         var cString = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         
         guard cString.count >= 6 else {
@@ -132,8 +136,12 @@ extension UIColor {
             return
         }
         
-        let rString = cString[0, 2]
-        let gString = cString[2, 2]
-        
+        var r: UInt32 = 0
+        var g: UInt32 = 0
+        var b: UInt32 = 0
+        Scanner(string: cString[0, 2]).scanHexInt32(&r)
+        Scanner(string: cString[2, 2]).scanHexInt32(&g)
+        Scanner(string: cString[4, 2]).scanHexInt32(&b)
+        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: alpha)
     }
 }
