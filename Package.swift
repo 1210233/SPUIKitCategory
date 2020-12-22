@@ -27,7 +27,7 @@ import PackageDescription
 let package = Package(name: "SPUIKitCategory",
                       products: [.library(name: "SPUIKitCategory",
                                           targets: ["SPUIKitCategory"])],
-                      targets: [.target(name: "SPUITextFieldCategory",
+                      targets: [.target(name: "SPUIKitCategory",
                                         dependencies: [],
                                         path: "Sources")
                                 ]

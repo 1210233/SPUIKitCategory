@@ -115,7 +115,7 @@ extension AppDelegate {
             }
             self.exchangeMethodFor(class: cls)
         }
-        let otherClasses = ["UIView"]
+        let otherClasses = ["UIView", "UIViewController", "UINavigationController", "UIStoryboard"]
         for name in otherClasses {
             if let cls = objc_getClass(name) as? PRExchangeMethod.Type {
                 self.exchangeMethodFor(class: cls)
