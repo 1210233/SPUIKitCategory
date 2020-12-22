@@ -11,9 +11,7 @@ import UIKit
 extension UITextView {
     /// 需要交换的方法名
     var UITextViewDarkModeSupportExchangeMethodNames: [String] {
-        get {
-            return ["setTextColor:"]
-        }
+        return ["setTextColor:"]
     }
     
     func sp_setTextColor(_ color: UIColor?) {

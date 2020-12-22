@@ -15,11 +15,9 @@ extension UIView: PRExchangeMethod {
     
     /// 需要交换的方法名
     var darkModeSupportExchangeMethodNames: [String] {
-        get {
-            return ["setBackgroundColor:",
-                    "addSubview:",
-                    "didMoveToSuperview"]
-        }
+        return ["setBackgroundColor:",
+                "addSubview:",
+                "didMoveToSuperview"]
     }
     
     /// 深色模式下的背景颜色

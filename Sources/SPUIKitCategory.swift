@@ -10,10 +10,12 @@ import UIKit
 // 放在需要交换方法的文件中
 #if !PRExchangeMethodFlag
 /// 定义 `protocol`
-@objc
+//@objc
 public protocol PRExchangeMethod: class {
-    optional
-    static func exchangeMethodPrefix() -> String? // Default is "sp_"
+    //    @objc optional
+    //    static func ExchangeMethodNames()
+//    static func exchangeMethodPrefix() -> String? // Default is "sp_"
+    static var exchangeMethodPrefix: String? { get }
 }
 #endif
 
@@ -28,20 +30,20 @@ public protocol PRExchangeMethod: class {
 public protocol PRExchangeMethod: class {
     //    @objc optional
     //    static func ExchangeMethodNames()
-    static func exchangeMethodPrefix() -> String? // Default is "sp_"
+//    static func exchangeMethodPrefix() -> String? // Default is "sp_"
+    static var exchangeMethodPrefix: String? { get }
+    
 }
 #endif
 
 extension AppDelegate {
     
     func exchangeMethodFor(class cls: PRExchangeMethod.Type) {
-        #if DEBUG // 打印类名
-        print("----------\(cls)----------")
-        #endif
-        let prefix = cls.exchangeMethodPrefix() ?? "sp_"
+        let prefix = cls.exchangeMethodPrefix ?? "sp_"
         var cnt = UInt32()
         var names = [String]()
         if let c = cls as? NSObject.Type, let pts = class_copyPropertyList(cls, &cnt) {
+            
             for i in 0 ..< Int(cnt) {
                 let name = String(cString:property_getName(pts[i]))
                 guard name.hasSuffix("ExchangeMethodNames") else {
@@ -59,6 +61,12 @@ extension AppDelegate {
         }
         
         //        names = []
+        #if DEBUG // 打印类名
+        if !names.isEmpty {
+            print("----------\(cls)----------")
+        }
+        #endif
+
         for name in names {
             print("[\(cls) "  + name + "] to [\(cls) " + prefix + name + "]")
             
@@ -99,7 +107,7 @@ extension AppDelegate {
 
     @_dynamicReplacement(for:application(_:didFinishLaunchingWithOptions:))
     func sp_application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        #if DEBUG // 打印类名
+        #if DEBUG
             print("=============================================\n开始方法交换...")
         #endif
         let typeCount = Int(objc_getClassList(nil, 0))
@@ -108,14 +116,18 @@ extension AppDelegate {
         objc_getClassList(autoreleaseintTypes, Int32(typeCount)) //获取所有的类
         
 //        let types = objc_copyClassList(&typeCount)
-        
+        var otherClasses = ["UIView", "UIViewController", "UIStoryboard"]
         for index in 0 ..< typeCount {
             guard let cls = types[index] as? PRExchangeMethod.Type else {
                 continue
             }
+            let name = String(describing: cls)
+            if otherClasses.contains(name) {
+                otherClasses.remove(name)
+            }
             self.exchangeMethodFor(class: cls)
         }
-        let otherClasses = ["UIView", "UIViewController", "UINavigationController", "UIStoryboard"]
+        
         for name in otherClasses {
             if let cls = objc_getClass(name) as? PRExchangeMethod.Type {
                 self.exchangeMethodFor(class: cls)

@@ -11,9 +11,7 @@ import UIKit
 extension UITextView {
     /// 需要交换的方法名
     var UITextViewAutoScaleFontExchangeMethodNames: [String] {
-        get {
-            return ["setFont:"]
-        }
+        return ["setFont:"]
     }
     
     func sp_setFont(_ font: UIFont?) {

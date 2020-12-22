@@ -8,12 +8,14 @@
 import UIKit
 
 @objc
-extension UIViewController {
+extension UIViewController: PRExchangeMethod {
+    public static var exchangeMethodPrefix: String? {
+        return nil
+    }
+    
     /// 需要交换的方法名
     var UIViewControllerXibCreationExchangeMethodNames: [String] {
-        get {
-            return ["init"]
-        }
+        return ["init"]
     }
     
     /**
@@ -40,9 +42,7 @@ extension UIViewController {
 extension UINavigationController {
     /// 需要交换的方法名
     var UINavigationControllerXibCreationExchangeMethodNames: [String] {
-        get {
-            return ["initWithRootViewController:"]
-        }
+        return ["initWithRootViewController:"]
     }
     func sp_initWithRootViewController(_ vc: UIViewController) -> UINavigationController {
         let navi = self.sp_initWithRootViewController(vc)
@@ -53,12 +53,14 @@ extension UINavigationController {
 }
 
 @objc
-extension UIStoryboard {
+extension UIStoryboard: PRExchangeMethod {
+    public static var exchangeMethodPrefix: String? {
+        nil
+    }
+    
     /// 需要交换的方法名
     var UIStoryboardXibCreationExchangeMethodNames: [String] {
-        get {
-            return ["instantiateInitialViewController"]
-        }
+        return ["instantiateInitialViewController"]
     }
     
     func sp_instantiateInitialViewController() -> UIViewController? {

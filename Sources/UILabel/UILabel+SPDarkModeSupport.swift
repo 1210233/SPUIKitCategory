@@ -11,9 +11,7 @@ import UIKit
 extension UILabel {
     /// 需要交换的方法名
     var UILabelDarkModeSupportExchangeMethodNames: [String] {
-        get {
-            return ["setTextColor:"]
-        }
+        return ["setTextColor:"]
     }
     
     func sp_setTextColor(_ color: UIColor?) {
