@@ -1,16 +1,17 @@
 //
-//  UITextView+AutoScale.swift
+//  UITextField+AutoScale.swift
 //  WenYanWen
 //
-//  Created by LSP on 2020/12/22.
+//  Created by Bee on 2020/12/22.
 //
 
 import UIKit
 
 @objc
-extension UITextView {
+extension UITextField {
+    
     /// 需要交换的方法名
-    var UITextViewAutoScaleFontExchangeMethodNames: [String] {
+    var UITextFieldAutoScaleFontExchangeMethodNames: [String] {
         get {
             return ["setFont:"]
         }

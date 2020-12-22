@@ -16,7 +16,7 @@ extension UIFont {
             return false
         }
         set {
-            objc_setAssociatedObject(self, "autoscaled", NSNumber(booleanLiteral: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, "autoscaled", NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
