@@ -35,7 +35,7 @@ extension UITextField {
     /**
      根据375屏幕宽度的比例自动缩放字体大小.
      */
-    @IBInspectable
+    @IBInspectable public
     var autoScaleFont: Bool {
         get {
             if let v = objc_getAssociatedObject(self, "autoScaleFont") as? NSNumber {

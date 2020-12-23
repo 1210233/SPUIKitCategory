@@ -19,6 +19,20 @@ public protocol PRExchangeMethod: class {
 }
 #endif
 
+public let screenWidthScaleBase375: CGFloat = {
+    var scale: CGFloat = 1
+    let o = UIApplication.shared.statusBarOrientation
+    
+    if (o.isPortrait) {
+        scale = UIScreen.main.bounds.size.width / 375
+    }else if (o.isLandscape) {
+        scale = UIScreen.main.bounds.size.height / 375
+    }
+    return scale
+}()
+
+
+
 
 // 放在AppDelegate中
 #if NEVER_COMPILE
@@ -26,6 +40,7 @@ public protocol PRExchangeMethod: class {
 
 #if PRExchangeMethodFlag // 在other swift flags中添加 -D PRExchangeMethodFlag
 /// 定义 `protocol`
+/// Warning: 必需在拓展前或属性前加上@objc，否则class_copyPropertyList方法读取不到下面的属性
 //@objc
 public protocol PRExchangeMethod: class {
     //    @objc optional

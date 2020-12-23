@@ -33,7 +33,7 @@ extension UITextField {
         self.sp_setTextColor(txtColor)
     }
     
-    @IBInspectable
+    @IBInspectable public
     var darkModeTextColor: UIColor? {
         get {
             return objc_getAssociatedObject(self, "darkModeTextColor") as? UIColor

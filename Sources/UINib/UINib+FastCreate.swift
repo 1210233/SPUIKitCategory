@@ -14,13 +14,14 @@ import UIKit
  *  @return 对应的NIB对象
  */
 extension UINib {
-    convenience
+    convenience public
     init(nibName: String) {
         self.init(nibName: nibName, bundle: nil)
     }
 }
 
 extension UIView {
+    public
     class func nibInMainBundle(nibName: String = "") -> UINib {
         if nibName.isEmpty {
             return UINib(nibName: String(describing: self))
@@ -30,6 +31,7 @@ extension UIView {
 }
 
 extension UIViewController {
+    public
     class func nibInMainBundle(nibName: String = "") -> UINib {
         if nibName.isEmpty {
             return UINib(nibName: String(describing: self))
@@ -39,6 +41,8 @@ extension UIViewController {
 }
 
 extension String {
+    
+    public
     func nibInMainBundle() -> UINib? {
         if self.isEmpty {
             return nil
@@ -46,6 +50,7 @@ extension String {
         return Bundle.main.loadNibNamed(self, owner: nil, options: nil)?.first as? UINib
     }
     
+    public
     func nibInBundle(_ bundleName: String) -> UINib? {
         if self.isEmpty {
             return nil

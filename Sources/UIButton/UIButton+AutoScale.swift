@@ -12,7 +12,7 @@ extension UIButton {
     /**
      根据375的屏幕宽度来缩放titleLabel的字体(NormalState)
      */
-    @IBInspectable
+    @IBInspectable public
     var autoScaleFont: Bool {
         get {
             return self.titleLabel?.autoScaleFont ?? false

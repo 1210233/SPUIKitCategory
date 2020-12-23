@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIFont {
+    public
     var autoscaled: Bool {
         get {
             if let n = objc_getAssociatedObject(self, "autoscaled") as? NSNumber {

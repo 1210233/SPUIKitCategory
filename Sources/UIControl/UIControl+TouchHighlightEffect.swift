@@ -9,7 +9,7 @@ import UIKit
 
 @objc
 extension UIControl {
-    
+    private
     func _addHighlightEffectOnTouch() {
         if self.unHighlightedBackgroundColor == nil {
             self.unHighlightedBackgroundColor = self.backgroundColor;
@@ -19,25 +19,28 @@ extension UIControl {
         self.addTarget(self, action: #selector(touchNeedsCancelHighlighted), for: [.touchCancel, .touchDragExit, .touchUpInside])
     }
 
+    private
     func _removeHighlightEffectOnTouch() {
         self.removeTarget(self, action: #selector(touchNeedsHighlighted), for: .allEvents)
         self.removeTarget(self, action: #selector(touchNeedsCancelHighlighted), for: .allEvents)
     }
 
 
-
+    private
     func touchNeedsHighlighted() {
         UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseIn, .layoutSubviews, .allowUserInteraction], animations: {
             self.backgroundColor = self.highlightedBackgroundColor
         }, completion: nil)
     }
 
+    private
     func touchNeedsCancelHighlighted() {
         UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut, .layoutSubviews, .allowUserInteraction], animations: {
             self.backgroundColor = self.unHighlightedBackgroundColor
         }, completion: nil)
     }
 
+    private
     func touchNeedsAnimation() {
         self.backgroundColor = self.highlightedBackgroundColor;
         
@@ -51,7 +54,7 @@ extension UIControl {
     /**
      是否在按下时候显示高亮效果. 默认：NO。
      */
-    @IBInspectable
+    @IBInspectable public
     var touchHighlightAble: Bool {
         get {
             if let v = objc_getAssociatedObject(self, "touchHighlightAble") as? NSNumber {
@@ -75,7 +78,7 @@ extension UIControl {
     /**
      高亮（按住）时的颜色
      */
-    @IBInspectable
+    @IBInspectable public
     var highlightedBackgroundColor: UIColor {
         get {
             if let color = objc_getAssociatedObject(self, "highlightedBackgroundColor") as? UIColor {
@@ -92,7 +95,7 @@ extension UIControl {
     /**
      非高亮（松开）时的颜色
      */
-    @IBInspectable
+    @IBInspectable public
     var unHighlightedBackgroundColor: UIColor? {
         get {
             return objc_getAssociatedObject(self, "unHighlightedBackgroundColor") as? UIColor

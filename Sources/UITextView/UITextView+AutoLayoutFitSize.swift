@@ -20,6 +20,7 @@ extension UITextView {
      *  @param os: [文本所占的宽度 + os] 即为frame的宽度. 范围:[FLT_MIN ~ FLT_MAX]
      *  @return 计算后的宽度值
      */
+    public
     func fitWidth(offset: CGFloat = 0) -> CGFloat {
         if let cons = self.widthConstraint {
             cons.constant = self.sizeThatFits(CGSize(width: 99999, height: self.font?.pointSize ?? 15 * 1.5)).width + offset
@@ -34,6 +35,7 @@ extension UITextView {
      *  @param os: 文本所占的高度 + os 即为frame的高度. 范围:[FLT_MIN ~ FLT_MAX]
      *  @return 计算后的高度值
      */
+    public
     func fitHeightFor(width: CGFloat, offset: CGFloat = 0) -> CGFloat {
         if let cons = self.heightConstraint {
             cons.constant = self.sizeThatFits(CGSize(width: width, height: 999999)).height + offset

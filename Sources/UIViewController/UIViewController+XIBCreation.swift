@@ -9,9 +9,7 @@ import UIKit
 
 @objc
 extension UIViewController: PRExchangeMethod {
-    public static var exchangeMethodPrefix: String? {
-        return nil
-    }
+    static var exchangeMethodPrefix: String?
     
     /// 需要交换的方法名
     var UIViewControllerXibCreationExchangeMethodNames: [String] {
@@ -21,6 +19,7 @@ extension UIViewController: PRExchangeMethod {
     /**
      *  从XIB文件（与类名相同的xib）初始化。
      */
+    public
     class func loadFromNib() -> UIViewController {
         let name = String(describing: self)
         if let _ = Bundle.main.path(forResource: name, ofType: "xib") {
@@ -54,9 +53,8 @@ extension UINavigationController {
 
 @objc
 extension UIStoryboard: PRExchangeMethod {
-    public static var exchangeMethodPrefix: String? {
-        nil
-    }
+    
+    static var exchangeMethodPrefix: String?
     
     /// 需要交换的方法名
     var UIStoryboardXibCreationExchangeMethodNames: [String] {

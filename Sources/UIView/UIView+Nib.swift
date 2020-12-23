@@ -14,13 +14,14 @@ extension UIView {
      *  @param nibName nib名字 [默认本类的类名]
      *  @param bundle  nib文件包（目录）[默认mainBundle]
      */
-    public func loadNibNamed(nibName: String = String(describing: self), bundle: Bundle = Bundle.main) -> UINib {
+    public
+    class func loadNibNamed(nibName: String = String(describing: self), bundle: Bundle = Bundle.main) -> UINib {
         return UINib(nibName: nibName, bundle: bundle)
     }
 
     
     ///mark --------- XIB INSPECTABLE -----------
-    @IBInspectable
+    @IBInspectable public
     var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
@@ -30,7 +31,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable
+    @IBInspectable public
     var shadowOpacity: Float {
         get {
             return self.layer.shadowOpacity
@@ -40,7 +41,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable
+    @IBInspectable public
     var shadowRadius: CGFloat {
         get {
             return self.layer.shadowRadius
@@ -50,7 +51,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable
+    @IBInspectable public
     var shadowColor: UIColor? {
         get {
             if let color = self.layer.shadowColor {
@@ -64,7 +65,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable
+    @IBInspectable public
     var shadowOffset: CGSize {
         get {
             return self.layer.shadowOffset
@@ -74,7 +75,7 @@ extension UIView {
         }
     }
 
-    @IBInspectable
+    @IBInspectable public
     var maskToBounds: Bool {
         get {
             return self.layer.masksToBounds

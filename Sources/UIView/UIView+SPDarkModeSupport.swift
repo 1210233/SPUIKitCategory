@@ -8,10 +8,10 @@
 
 import UIKit
 
-@objc // 必需在拓展前或属性前加上@objc，否则class_copyPropertyList方法读取不到下面的属性
+@objc
 extension UIView: PRExchangeMethod {
     
-    public static var exchangeMethodPrefix: String?
+    static var exchangeMethodPrefix: String?
     
     /// 需要交换的方法名
     var darkModeSupportExchangeMethodNames: [String] {
@@ -21,7 +21,7 @@ extension UIView: PRExchangeMethod {
     }
     
     /// 深色模式下的背景颜色
-    public
+    @IBInspectable public
     var darkModeBackgroundColor: UIColor? {
         get {
             return objc_getAssociatedObject(self, "darkModeBackgroundColor") as? UIColor

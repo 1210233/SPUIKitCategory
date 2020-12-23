@@ -10,6 +10,7 @@ import UIKit
 extension UIButton {
     
     ///开始加载
+    public
     func startLoading() {
         let aiv = UIActivityIndicatorView(style: .gray)
         aiv.center = self.center
@@ -20,6 +21,7 @@ extension UIButton {
     }
     
     ///结束加载
+    public
     func endLoading() {
         self.isEnabled = true
         

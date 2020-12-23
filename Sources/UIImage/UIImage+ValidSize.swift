@@ -8,19 +8,42 @@
 import UIKit
 
 extension UIImage {
+    
+    public lazy
     var dataIn32KB: Data {
-        return self.dataIn(KB: 32)
+        get {
+            if let d = objc_getAssociatedObject(self, "dataIn32KB") as? Data {
+                return d
+            }
+            let d = self.dataIn(KB: 32)
+            objc_setAssociatedObject(self, "dataIn32KB", d, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return d
+        }
     }
+    
+    public lazy
     var dataIn400KB: Data {
-        return self.dataIn(KB: 400)
+        get {
+            if let d = objc_getAssociatedObject(self, "dataIn400KB") as? Data {
+                return d
+            }
+            let d = self.dataIn(KB: 400)
+            objc_setAssociatedObject(self, "dataIn400KB", d, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return d
+        }
     }
+    
+    public
     func dataIn(KB: UInt) -> Data {
         return self.dataIn(bytes: KB * 1024)
     }
+    
+    public
     func dataIn(MB: UInt) -> Data {
         return self.dataIn(KB: MB * 1024)
     }
     
+    public
     func dataIn(bytes: UInt) -> Data {
         var img = self
         var width = self.size.width
@@ -61,6 +84,7 @@ extension UIImage {
         }
     }
     
+    public lazy
     var validSize: CGSize {
         get {
             if let num = objc_getAssociatedObject(self, "sp_validSize") as? NSNumber {
@@ -85,6 +109,7 @@ extension UIImage {
         }
     }
     
+    public
     func scaledTo(size: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(size)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))

@@ -10,6 +10,7 @@ import UIKit
 @objc
 extension UIView {
     
+    private
     var constraintsForOtherViews: NSMutableDictionary {
         get {
             if let dic = objc_getAssociatedObject(self, "constraintsForOtherViews") as? NSMutableDictionary {
@@ -21,6 +22,8 @@ extension UIView {
             }
         }
     }
+    
+    private
     var storedConstraintsKey: String {
         if let key = objc_getAssociatedObject(self, "storedConstraintsKey") as? String {
             return key
@@ -30,6 +33,8 @@ extension UIView {
             return key
         }
     }
+    
+    private
     func constraintsDicFor(view: UIView) -> NSMutableDictionary {
         if let dic = self.constraintsForOtherViews[view.storedConstraintsKey] as? NSMutableDictionary {
             return dic
@@ -311,7 +316,7 @@ extension UIView {
             objc_setAssociatedObject(self, "widthConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    public
+    @IBInspectable public
     var widthConstant: CGFloat {
         get {
             return self.widthConstraint?.constant ?? 0;
@@ -350,7 +355,7 @@ extension UIView {
             objc_setAssociatedObject(self, "heightConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    public
+    @IBInspectable public
     var heightConstant: CGFloat {
         get {
             return self.heightConstraint?.constant ?? 0;
@@ -377,45 +382,6 @@ extension UIView {
     
     
     /**
-     本视图左边距离父视图的约束. 如果在XIB中已创建该约束，可连线关联到本属性。
-     若未创建，则在调用getter时会自动创建，默认constant为0.
-    */
-    @IBOutlet public
-    var leftConstraint: NSLayoutConstraint? {
-        get {
-            return objc_getAssociatedObject(self, "leftConstraint") as? NSLayoutConstraint
-        }
-        set {
-            objc_setAssociatedObject(self, "leftConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-    public
-    var leftConstant: CGFloat {
-        get {
-            return self.leftConstraint?.constant ?? 0;
-        }
-        set {
-            if let cons = self.leftConstraint {
-                cons.constant = newValue;
-            }else{
-                self.makeLeftConstraint(newValue)
-            }
-        }
-    }
-    @discardableResult
-    func makeLeftConstraint(_ left: CGFloat) -> NSLayoutConstraint {
-        if (self.translatesAutoresizingMaskIntoConstraints) {
-            self.translatesAutoresizingMaskIntoConstraints = false
-        }
-        let constraint = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: self.superview, attribute: .leading, multiplier: 1, constant: left)
-        
-        self.superview?.addConstraint(constraint)
-        self.leftConstraint = constraint
-        return constraint;
-    }
-    
-    
-    /**
      本视图顶部距离父视图的约束. 如果在XIB中已创建该约束，可连线关联到本属性。
      若未创建，则在调用getter时会自动创建，默认constant为0.
      */
@@ -428,7 +394,7 @@ extension UIView {
             objc_setAssociatedObject(self, "topConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    public
+    @IBInspectable public
     var topConstant: CGFloat {
         get {
             return self.topConstraint?.constant ?? 0;
@@ -455,6 +421,45 @@ extension UIView {
     
     
     /**
+     本视图左边距离父视图的约束. 如果在XIB中已创建该约束，可连线关联到本属性。
+     若未创建，则在调用getter时会自动创建，默认constant为0.
+    */
+    @IBOutlet public
+    var leftConstraint: NSLayoutConstraint? {
+        get {
+            return objc_getAssociatedObject(self, "leftConstraint") as? NSLayoutConstraint
+        }
+        set {
+            objc_setAssociatedObject(self, "leftConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    @IBInspectable public
+    var leftConstant: CGFloat {
+        get {
+            return self.leftConstraint?.constant ?? 0;
+        }
+        set {
+            if let cons = self.leftConstraint {
+                cons.constant = newValue;
+            }else{
+                self.makeLeftConstraint(newValue)
+            }
+        }
+    }
+    @discardableResult
+    func makeLeftConstraint(_ left: CGFloat) -> NSLayoutConstraint {
+        if (self.translatesAutoresizingMaskIntoConstraints) {
+            self.translatesAutoresizingMaskIntoConstraints = false
+        }
+        let constraint = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: self.superview, attribute: .leading, multiplier: 1, constant: left)
+        
+        self.superview?.addConstraint(constraint)
+        self.leftConstraint = constraint
+        return constraint;
+    }
+    
+    
+    /**
      本视图右边距离父视图的约束. 如果在XIB中已创建该约束，可连线关联到本属性。
      若未创建，则在调用getter时会自动创建，默认constant为0.
     */
@@ -467,7 +472,7 @@ extension UIView {
             objc_setAssociatedObject(self, "rightConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    public
+    @IBInspectable public
     var rightConstant: CGFloat {
         get {
             return self.rightConstraint?.constant ?? 0;
@@ -506,7 +511,7 @@ extension UIView {
             objc_setAssociatedObject(self, "bottomConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    public
+    @IBInspectable public
     var bottomConstant: CGFloat {
         get {
             return self.bottomConstraint?.constant ?? 0;
@@ -545,7 +550,7 @@ extension UIView {
             objc_setAssociatedObject(self, "centerXConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    public
+    @IBInspectable public
     var centerXConstant: CGFloat {
         get {
             return self.centerXConstraint?.constant ?? 0;
@@ -583,7 +588,7 @@ extension UIView {
             objc_setAssociatedObject(self, "centerYConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    public
+    @IBInspectable public
     var centerYConstant: CGFloat {
         get {
             return self.centerYConstraint?.constant ?? 0;

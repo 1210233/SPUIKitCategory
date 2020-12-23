@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIWindow {
+    public
     class var window: UIWindow {
         get {
             if let v = UIApplication.shared.keyWindow {

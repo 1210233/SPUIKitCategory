@@ -10,6 +10,7 @@ import UIKit
 
 extension String {
     /// string[NSRage(location: loc, length: len)]
+    public
     subscript(bounds: NSRange) -> String {
         if bounds.location < 0  || bounds.location >= self.count {
             return ""
@@ -23,6 +24,7 @@ extension String {
         return String(self[sIndex..<eIndex])
     }
     /// string[x ..< y]
+    public
     subscript(r: Range<Int>) -> String {
         if r.lowerBound < 0 ||
             r.lowerBound >= self.count ||
@@ -40,6 +42,7 @@ extension String {
         return String(self[sIndex..<eIndex])
     }
     /// string[x ... y]
+    public
     subscript(r: ClosedRange<Int>) -> String {
         if r.lowerBound < 0 ||
             r.lowerBound >= self.count ||
@@ -57,10 +60,12 @@ extension String {
         return String(self[sIndex...eIndex])
     }
     /// string[x ...]
+    public
     subscript(r: PartialRangeFrom<Int>) -> String {
         return self[r.lowerBound...self.count - 1]
     }
     /// string[...y]
+    public
     subscript(r: PartialRangeThrough<Int>) -> String {
         if self.isEmpty {
             return ""
@@ -68,6 +73,7 @@ extension String {
         return self[0...r.upperBound]
     }
     /// string[..< y]
+    public
     subscript(r: PartialRangeUpTo<Int>) -> String {
         if self.isEmpty {
             return ""
@@ -75,6 +81,7 @@ extension String {
         return self[0..<r.upperBound]
     }
     /// string[loc, len]
+    public
     subscript(loc: Int, len: Int = 1) -> String {
         return self[NSRange(location: loc, length: len)]
     }
@@ -86,7 +93,7 @@ extension UIColor {
     /// 16进制数值初始化颜色
     /// - Parameter hex: 若长度4字节，第一字节为Alpha，二三四字节为RGB。
     ///                  若长度3自己，则三个字节分别为RGB，Alpha为1。
-    convenience
+    convenience public
     init(hex: UInt) {
         
         let c1 = UInt8(hex >> 24 & 0xFF)
@@ -102,7 +109,7 @@ extension UIColor {
     }
     
     /// r.g.b.a RRRGGGBBB eg:23056098 -> r=23 g=56 b=98
-    convenience
+    convenience public
     init(RGB rgb: UInt, alpha: CGFloat = 1) {
         let red = CGFloat((rgb / 1000 / 1000) % 1000);
         let green = CGFloat((rgb / 1000) % 1000);
@@ -113,7 +120,7 @@ extension UIColor {
     /**
      * @param color can be 0xAABBCC or 0XAABBCC, and or #AABBCC
      */
-    convenience
+    convenience public
     init(hexString string: String, alpha: CGFloat = 1) {
         var cString = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         
