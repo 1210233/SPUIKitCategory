@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc
+@objc public
 extension UIView: PRExchangeMethod {
     
     public
