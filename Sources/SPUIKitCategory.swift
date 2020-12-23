@@ -7,17 +7,7 @@
 
 import UIKit
 
-// 放在需要交换方法的文件中
-#if !PRExchangeMethodFlag
-/// 定义 `protocol`
-//@objc
-public protocol PRExchangeMethod: class {
-    //    @objc optional
-    //    static func ExchangeMethodNames()
-//    static func exchangeMethodPrefix() -> String? // Default is "sp_"
-    static var exchangeMethodPrefix: String? { get }
-}
-#endif
+
 
 public let screenWidthScaleBase375: CGFloat = {
     var scale: CGFloat = 1
@@ -38,27 +28,13 @@ public let screenWidthScaleBase375: CGFloat = {
 #if NEVER_COMPILE
 
 
-#if PRExchangeMethodFlag // 在other swift flags中添加 -D PRExchangeMethodFlag
-/// 定义 `protocol`
-/// Warning: 必需在拓展前或属性前加上@objc，否则class_copyPropertyList方法读取不到下面的属性
-//@objc
-public protocol PRExchangeMethod: class {
-    //    @objc optional
-    //    static func ExchangeMethodNames()
-//    static func exchangeMethodPrefix() -> String? // Default is "sp_"
-    static var exchangeMethodPrefix: String? { get }
-    
-}
-#endif
-
 extension AppDelegate {
     
-    func exchangeMethodFor(class cls: PRExchangeMethod.Type) {
-        let prefix = cls.exchangeMethodPrefix ?? "sp_"
+    func exchangeMethodFor(class cls: AnyClass) {
+        let prefix = "sp_"
         var cnt = UInt32()
         var names = [String]()
         if let c = cls as? NSObject.Type, let pts = class_copyPropertyList(cls, &cnt) {
-            
             for i in 0 ..< Int(cnt) {
                 let name = String(cString:property_getName(pts[i]))
                 guard name.hasSuffix("ExchangeMethodNames") else {
@@ -70,12 +46,10 @@ extension AppDelegate {
                     if let array = arr.takeUnretainedValue() as? [String] {
                         names += array
                     }
-                    //                    arr.release()
                 }
             }
         }
         
-        //        names = []
         #if DEBUG // 打印类名
         if !names.isEmpty {
             print("----------\(cls)----------")
@@ -125,26 +99,28 @@ extension AppDelegate {
         #if DEBUG
             print("=============================================\n开始方法交换...")
         #endif
+        
         let typeCount = Int(objc_getClassList(nil, 0))
         let  types = UnsafeMutablePointer<AnyClass>.allocate(capacity: typeCount)
         let autoreleaseintTypes = AutoreleasingUnsafeMutablePointer<AnyClass>(types)
         objc_getClassList(autoreleaseintTypes, Int32(typeCount)) //获取所有的类
         
-//        let types = objc_copyClassList(&typeCount)
         var otherClasses = ["UIView", "UIViewController", "UIStoryboard"]
+        
         for index in 0 ..< typeCount {
-            guard let cls = types[index] as? PRExchangeMethod.Type else {
-                continue
+            let cls: AnyClass = types[index]
+            
+            if class_conformsToProtocol(cls, NSObjectProtocol.self) {
+                let name = String(describing: cls)
+                if otherClasses.contains(name) {
+                    otherClasses -= name
+                }
+                self.exchangeMethodFor(class: cls)
             }
-            let name = String(describing: cls)
-            if otherClasses.contains(name) {
-                otherClasses.remove(name)
-            }
-            self.exchangeMethodFor(class: cls)
         }
         
         for name in otherClasses {
-            if let cls = objc_getClass(name) as? PRExchangeMethod.Type {
+            if let cls = objc_getClass(name) as? AnyClass {
                 self.exchangeMethodFor(class: cls)
             }
         }
