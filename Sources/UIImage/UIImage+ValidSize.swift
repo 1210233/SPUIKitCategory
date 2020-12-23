@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImage {
     
-    public lazy
+    public
     var dataIn32KB: Data {
         get {
             if let d = objc_getAssociatedObject(self, "dataIn32KB") as? Data {
@@ -21,7 +21,7 @@ extension UIImage {
         }
     }
     
-    public lazy
+    public
     var dataIn400KB: Data {
         get {
             if let d = objc_getAssociatedObject(self, "dataIn400KB") as? Data {
@@ -84,7 +84,7 @@ extension UIImage {
         }
     }
     
-    public lazy
+    public
     var validSize: CGSize {
         get {
             if let num = objc_getAssociatedObject(self, "sp_validSize") as? NSNumber {
