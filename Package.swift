@@ -25,6 +25,7 @@
 import PackageDescription
 
 let package = Package(name: "SPUIKitCategory",
+                      platforms: [.iOS(.v9)],
                       products: [.library(name: "SPUIKitCategory",
                                           targets: ["SPUIKitCategory"])],
                       targets: [.target(name: "SPUIKitCategory",

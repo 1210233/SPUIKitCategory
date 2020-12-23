@@ -9,6 +9,8 @@ import UIKit
 
 @objc
 extension UIViewController: PRExchangeMethod {
+    
+    public
     static var exchangeMethodPrefix: String?
     
     /// 需要交换的方法名
@@ -54,6 +56,7 @@ extension UINavigationController {
 @objc
 extension UIStoryboard: PRExchangeMethod {
     
+    public
     static var exchangeMethodPrefix: String?
     
     /// 需要交换的方法名

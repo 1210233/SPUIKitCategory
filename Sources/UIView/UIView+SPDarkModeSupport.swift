@@ -11,6 +11,7 @@ import UIKit
 @objc
 extension UIView: PRExchangeMethod {
     
+    public
     static var exchangeMethodPrefix: String?
     
     /// 需要交换的方法名
