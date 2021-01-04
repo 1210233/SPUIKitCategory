@@ -5,9 +5,9 @@
 //  Created by Bee on 2020/12/12.
 //
 
+#if !os(macOS)
+
 import UIKit
-
-
 
 public let screenWidthScaleBase375: CGFloat = {
     var scale: CGFloat = 1
@@ -132,5 +132,8 @@ extension AppDelegate {
         return self.application(application, didFinishLaunchingWithOptions:launchOptions)
     }
 }
+
+#endif
+
 
 #endif

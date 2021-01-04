@@ -614,3 +614,48 @@ extension UIView {
     }
 }
 
+
+@objc
+extension NSLayoutConstraint {
+    /// 需要交换的方法名
+    var autoScaleExchangeMethodNames: [String] {
+        return ["setConstant:"]
+    }
+    
+    
+    func sp_setConstant(_ constant: CGFloat) {
+        if (self.autoScale) {
+            return self.sp_setConstant(constant * screenWidthScaleBase375)
+        }
+        return self.sp_setConstant(constant)
+    }
+ 
+    /// 是否自动根据375屏幕宽度进行缩放constant的值.
+    @IBInspectable public
+    var autoScale: Bool {
+        get {
+            if let v = objc_getAssociatedObject(self, "autoScale") as? NSNumber {
+                return v.boolValue
+            }
+            return false
+        }
+        set {
+            if newValue == self.autoScale {
+                return
+            }
+            
+            objc_setAssociatedObject(self, "autoScale", NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            
+            if self.constant == 0 {
+                return
+            }
+            
+            if newValue {
+                self.sp_setConstant(self.constant * screenWidthScaleBase375)
+            }else{
+                self.sp_setConstant(self.constant / screenWidthScaleBase375)
+            }
+        }
+    }
+
+}
