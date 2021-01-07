@@ -9,7 +9,7 @@
 import UIKit
 
 @objc
-extension UIView: PRExchangeMethod {
+extension UIView {
     
     public
     static var exchangeMethodPrefix: String?

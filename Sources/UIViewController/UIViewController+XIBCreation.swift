@@ -8,7 +8,7 @@
 import UIKit
 
 @objc
-extension UIViewController: PRExchangeMethod {
+extension UIViewController {
     
     public
     static var exchangeMethodPrefix: String?
@@ -54,7 +54,7 @@ extension UINavigationController {
 }
 
 @objc
-extension UIStoryboard: PRExchangeMethod {
+extension UIStoryboard {
     
     public
     static var exchangeMethodPrefix: String?

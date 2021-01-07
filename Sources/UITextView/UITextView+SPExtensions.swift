@@ -5,7 +5,7 @@
 //  Created by LSP on 2021/1/7.
 //
 
-import Foundation
+import UIKit
 
 extension UITextView {
     public
