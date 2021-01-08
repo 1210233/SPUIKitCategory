@@ -112,7 +112,7 @@ extension UIImage {
     }
     
     public
-    func scaledTo(size: CGSize) -> Self {
+    func scaledTo(size: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(size)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))
         let img = UIGraphicsGetImageFromCurrentImageContext()

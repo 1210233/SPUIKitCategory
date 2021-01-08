@@ -28,8 +28,12 @@ let package = Package(name: "SPUIKitCategory",
                       platforms: [.iOS(.v9)],
                       products: [.library(name: "SPUIKitCategory",
                                           targets: ["SPUIKitCategory"])],
+                      dependencies: [
+                          // Dependencies declare other packages that this package depends on.
+                        .package(url: "https://gitee.com/1210233/SPFoundationCategory.git", from: Version(1, 0, 0)),
+                      ],
                       targets: [.target(name: "SPUIKitCategory",
-                                        dependencies: [],
+                                        dependencies: ["SPFoundationCategory"],
                                         path: "Sources")
                                 ]
                         )

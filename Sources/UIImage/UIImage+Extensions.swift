@@ -12,7 +12,7 @@ import UIKit
 extension UIImage {
     
     public class
-    func from(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> Self {
+    func from(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         guard (size.width > 0 && size.height > 0) else {
             return UIImage()
         }
@@ -30,7 +30,7 @@ extension UIImage {
     }
     
     public class
-    func from(layer: CALayer) -> Self {
+    func from(layer: CALayer) -> UIImage {
         if let ctx = UIGraphicsGetCurrentContext() {
             UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.isOpaque, 0)
             layer.render(in: ctx)
