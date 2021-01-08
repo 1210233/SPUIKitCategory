@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  SPUIKitCategory.swift
+//  SPUIKitCategory module
 //
 //  Created by Bee on 2020/12/12.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
 #if !os(macOS)

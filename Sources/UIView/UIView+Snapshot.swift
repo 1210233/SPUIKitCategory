@@ -1,11 +1,12 @@
 //
 //  UIView+Snapshot.swift
-//  SwiftPackageTest
+//  SPUIKitCategory module
 //
 //  Created by LSP on 2020/12/15.
 //  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 extension CALayer {
@@ -30,3 +31,4 @@ extension UIView {
         return self.layer.snapImage(opaque: opaque)
     }
 }
+#endif

@@ -1,92 +1,13 @@
 //
 //  UIColor+SPCreate.swift
-//  WenYanWen
+//  SPUIKitCategory module
 //
 //  Created by Bee on 2020/12/18.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
-
-
-extension String {
-    /// string[NSRage(location: loc, length: len)]
-    public
-    subscript(bounds: NSRange) -> String {
-        if bounds.location < 0  || bounds.location >= self.count {
-            return ""
-        }
-        var length = bounds.length
-        if bounds.location + length > self.count {
-            length = self.count - bounds.location
-        }
-        let sIndex = self.index(self.startIndex, offsetBy: bounds.location)
-        let eIndex = self.index(sIndex, offsetBy: length)
-        return String(self[sIndex..<eIndex])
-    }
-    /// string[x ..< y]
-    public
-    subscript(r: Range<Int>) -> String {
-        if r.lowerBound < 0 ||
-            r.lowerBound >= self.count ||
-            r.lowerBound < r.upperBound {
-            return ""
-        }
-        var e = r.upperBound
-        if e < r.lowerBound {
-            e = r.lowerBound
-        }else if r.lowerBound + e > self.count {
-            e = self.count - r.lowerBound
-        }
-        let sIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
-        let eIndex = self.index(self.startIndex, offsetBy: e)
-        return String(self[sIndex..<eIndex])
-    }
-    /// string[x ... y]
-    public
-    subscript(r: ClosedRange<Int>) -> String {
-        if r.lowerBound < 0 ||
-            r.lowerBound >= self.count ||
-            r.lowerBound < r.upperBound {
-            return ""
-        }
-        var e = r.upperBound
-        if e < r.lowerBound {
-            e = r.lowerBound
-        }else if r.lowerBound + e >= self.count {
-            e = self.count - r.lowerBound - 1
-        }
-        let sIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
-        let eIndex = self.index(self.startIndex, offsetBy: e)
-        return String(self[sIndex...eIndex])
-    }
-    /// string[x ...]
-    public
-    subscript(r: PartialRangeFrom<Int>) -> String {
-        return self[r.lowerBound...self.count - 1]
-    }
-    /// string[...y]
-    public
-    subscript(r: PartialRangeThrough<Int>) -> String {
-        if self.isEmpty {
-            return ""
-        }
-        return self[0...r.upperBound]
-    }
-    /// string[..< y]
-    public
-    subscript(r: PartialRangeUpTo<Int>) -> String {
-        if self.isEmpty {
-            return ""
-        }
-        return self[0..<r.upperBound]
-    }
-    /// string[loc, len]
-    public
-    subscript(loc: Int, len: Int = 1) -> String {
-        return self[NSRange(location: loc, length: len)]
-    }
-}
-
 
 extension UIColor {
     
@@ -152,3 +73,4 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: alpha)
     }
 }
+#endif

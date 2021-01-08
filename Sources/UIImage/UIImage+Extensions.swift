@@ -1,16 +1,18 @@
 //
-//  File.swift
-//  
+//  UIImage+Extensions.swift
+//  SPUIKitCategory module
 //
-//  Created by LSP on 2021/1/6.
+//  Created by LSP on 2020/12/6.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 extension UIImage {
     
     public class
-    func from(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+    func from(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> Self {
         guard (size.width > 0 && size.height > 0) else {
             return UIImage()
         }
@@ -28,7 +30,7 @@ extension UIImage {
     }
     
     public class
-    func from(layer: CALayer) -> UIImage {
+    func from(layer: CALayer) -> Self {
         if let ctx = UIGraphicsGetCurrentContext() {
             UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.isOpaque, 0)
             layer.render(in: ctx)
@@ -41,3 +43,4 @@ extension UIImage {
         return UIImage()
     }
 }
+#endif

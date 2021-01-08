@@ -1,10 +1,12 @@
 //
 //  UITextField+AutoScale.swift
-//  WenYanWen
+//  SPUIKitCategory module
 //
 //  Created by Bee on 2020/12/22.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 @objc
@@ -69,3 +71,4 @@ extension UITextField {
         }
     }
 }
+#endif

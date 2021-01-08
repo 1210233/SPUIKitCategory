@@ -1,10 +1,12 @@
 //
-//  File.swift
-//  
+//  UIButton+AutoLayoutFitSize.swift
+//  SPUIKitCategory module
 //
 //  Created by Bee on 2020/12/11.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 /**
@@ -29,5 +31,5 @@ extension UIButton {
         }
     }
 }
-
+#endif
 

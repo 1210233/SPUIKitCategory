@@ -1,10 +1,12 @@
 //
 //  UIImage+ValidSize.swift
-//  WenYanWen
+//  SPUIKitCategory module
 //
 //  Created by Bee on 2020/12/18.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 extension UIImage {
@@ -110,7 +112,7 @@ extension UIImage {
     }
     
     public
-    func scaledTo(size: CGSize) -> UIImage {
+    func scaledTo(size: CGSize) -> Self {
         UIGraphicsBeginImageContext(size)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))
         let img = UIGraphicsGetImageFromCurrentImageContext()
@@ -118,3 +120,4 @@ extension UIImage {
         return img ?? UIImage()
     }
 }
+#endif

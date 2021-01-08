@@ -1,11 +1,12 @@
 //
 //  UIView+XIBCreation.swift
-//  SwiftPackageTest
+//  SPUIKitCategory module
 //
 //  Created by LSP on 2020/12/15.
 //  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 extension UIView {
@@ -17,7 +18,7 @@ extension UIView {
     ///   - bundle: mainBundle
     /// - Returns: 实例
     public class
-    func loadFromNib(withName nibName: String = String(describing: self), owner: Any? = nil, bundle: Bundle = Bundle.main) -> UIView? {
+    func loadFromNib(withName nibName: String = String(describing: self), owner: Any? = nil, bundle: Bundle = Bundle.main) -> Self? {
         if let arr = bundle.loadNibNamed(nibName, owner: owner, options: nil) {
             for obj in arr {
                 if let cls = obj as? NSObject, cls.isKind(of: self.classForCoder())  {
@@ -28,4 +29,4 @@ extension UIView {
         return nil
     }
 }
-
+#endif

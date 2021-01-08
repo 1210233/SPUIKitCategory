@@ -1,10 +1,12 @@
 //
 //  UIView+Nib.swift
-//  WenYanWen
+//  SPUIKitCategory module
 //
 //  Created by Bee on 2020/12/15.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 extension UIView {
@@ -85,3 +87,4 @@ extension UIView {
         }
     }
 }
+#endif

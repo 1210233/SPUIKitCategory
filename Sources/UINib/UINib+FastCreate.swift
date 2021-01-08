@@ -1,10 +1,12 @@
 //
 //  UINib+FastCreate.swift
-//  WenYanWen
+//  SPUIKitCategory module
 //
 //  Created by Bee on 2020/12/18.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 /**
@@ -58,3 +60,4 @@ extension String {
         return Bundle(identifier: bundleName)?.loadNibNamed(self, owner: nil, options: nil)?.first as? UINib
     }
 }
+#endif

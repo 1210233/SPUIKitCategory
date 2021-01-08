@@ -1,10 +1,12 @@
 //
-//  File.swift
-//  
+//  UIView+LayoutConstraints.swift
+//  SPUIKitCategory module
 //
 //  Created by LSP on 2020/12/11.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 @objc
@@ -659,3 +661,4 @@ extension NSLayoutConstraint {
     }
 
 }
+#endif

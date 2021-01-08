@@ -1,10 +1,12 @@
 //
 //  UIButton+Loading.swift
-//  WenYanWen
+//  SPUIKitCategory module
 //
 //  Created by LSP on 2020/12/22.
+//  Copyright © 2020 LSP. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 extension UIButton {
@@ -31,3 +33,4 @@ extension UIButton {
         }
     }
 }
+#endif
