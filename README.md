@@ -13,13 +13,42 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-SPUIKitCategory is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+SPUIKitCategory is available through [SPM](Swift-Package-Manager). 
+　
+ 
+　
+ 
+Add SPUIKitCategory by your project dependency, In XCode:
 
-```ruby
-pod 'SPUIKitCategory'
-```
+　Step 1, open your project and click menus by `File -> Swift Packages -> Add Package Dependency...`.
+  
+　Step 2, in the "Enter package repository URL" field, fill `https://github.com/1210233/SPUIKitCategory.git` into it.
+  
+　Step 3, select a version rule which you want and click `next`, then click `Finish`.
 
+
+
+Add SPUIKitCategory by your `package dependency`, In File `Package.swift`:
+
+    
+    let package = Package(name: "SomePackage",
+                          platforms: [],
+                          products: [.library(name: "SomePackage",
+                                              targets: ["SomePackage"])],  
+                          dependencies: [
+                              // Dependencies declare other packages that this package depends on.
+                            .package(url: "https://github.com/1210233/SPUIKitCategory.git", from: Version(1, 0, 0)),
+                          ],
+
+                          targets: [.target(name: "SomePackage",
+                                            dependencies: ["SPUIKitCategory"],
+                                            path: "Sources")
+                                    ]  
+                            )
+                        
+                        
+
+                        
 ## Author
 
 LSP, 1210233@163.com
