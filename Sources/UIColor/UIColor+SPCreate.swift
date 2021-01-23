@@ -39,6 +39,24 @@ extension UIColor {
         self.init(red: CGFloat(red) / 999, green: CGFloat(green) / 999, blue: CGFloat(blue) / 999, alpha: alpha)
     }
     
+    /// RGBA初始化颜色
+    /// - Parameters:
+    ///   - rgb: (red, green, blue).  valid value [0 ~ 1]
+    ///   - alpha: alpha.  valid value [0 ~ 1].   defaults 1.
+    convenience public
+    init<T>(RGB rgb: (T, T, T), A alpha: T = 1) where T: BinaryFloatingPoint {
+        self.init(red: CGFloat(rgb.0), green: CGFloat(rgb.1), blue: CGFloat(rgb.2), alpha: CGFloat(alpha))
+    }
+    
+    /// RGBA初始化颜色
+    /// - Parameters:
+    ///   - rgb: (red, green, blue).  valid value [0 ~ 255]
+    ///   - alpha: alpha.  valid value [0 ~ 1].   defaults 1.
+    convenience public
+    init<T, P>(RGB rgb: (T, T, T), A alpha: P = 1) where T: BinaryInteger, P: BinaryFloatingPoint {
+        self.init(red: CGFloat(rgb.0) / 255, green: CGFloat(rgb.1) / 255, blue: CGFloat(rgb.2) / 255, alpha: CGFloat(alpha))
+    }
+    
     /**
      * @param color can be 0xAABBCC or 0XAABBCC, and or #AABBCC
      */
@@ -72,6 +90,35 @@ extension UIColor {
         Scanner(string: cString[2, 2]).scanHexInt32(&g)
         Scanner(string: cString[4, 2]).scanHexInt32(&b)
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: alpha)
+    }
+    
+    /// Color from another color.
+    /// - Parameter color: another color
+    public convenience
+    init(color: UIColor) {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+        self.init(red: r, green: g, blue: b, alpha: a)
+    }
+    
+    public typealias Modes = (normal: UIColor, night: UIColor)
+    /// color with normal mode an dark mode colors.
+    /// - Parameter mode: (normal mode color, dark mode color)
+    public convenience
+    init(mode: Modes) {
+        if #available(iOS 13.0, *) {
+            self.init { (colletion) -> UIColor in
+                if colletion.userInterfaceStyle == .dark {
+                    return mode.night
+                }
+                return mode.normal
+            }
+        } else {
+            self.init(color: mode.normal)
+        }
     }
 }
 #endif
