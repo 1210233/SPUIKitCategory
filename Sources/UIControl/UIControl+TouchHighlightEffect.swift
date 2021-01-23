@@ -59,21 +59,21 @@ extension UIControl {
     @IBInspectable public
     var touchHighlightAble: Bool {
         get {
-            if let v = objc_getAssociatedObject(self, "touchHighlightAble") as? NSNumber {
+            if let v = objc_getAssociatedObject(self, &sp_touchHighlightAbleKey) as? NSNumber {
                 return v.boolValue
             }
             return false
         }
         set {
-            if newValue == touchHighlightAble {
+            if newValue == self.touchHighlightAble {
                 return
             }
-            objc_setAssociatedObject(self, "touchHighlightAble", NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_touchHighlightAbleKey, NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if newValue {
-                
+                self._addHighlightEffectOnTouch()
             } else {
-                
+                self._removeHighlightEffectOnTouch()
             }
         }
     }
@@ -83,7 +83,7 @@ extension UIControl {
     @IBInspectable public
     var highlightedBackgroundColor: UIColor {
         get {
-            if let color = objc_getAssociatedObject(self, "highlightedBackgroundColor") as? UIColor {
+            if let color = objc_getAssociatedObject(self, &sp_highlightedBackgroundColorKey) as? UIColor {
                 return color
             }
             let color = UIColor(white: 0.8, alpha: 0.5)
@@ -91,7 +91,7 @@ extension UIControl {
             return color
         }
         set {
-            objc_setAssociatedObject(self, "highlightedBackgroundColor", newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_highlightedBackgroundColorKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
     }
     /**
@@ -100,10 +100,10 @@ extension UIControl {
     @IBInspectable public
     var unHighlightedBackgroundColor: UIColor? {
         get {
-            return objc_getAssociatedObject(self, "unHighlightedBackgroundColor") as? UIColor
+            return objc_getAssociatedObject(self, &sp_unHighlightedBackgroundColorKey) as? UIColor
         }
         set {
-            objc_setAssociatedObject(self, "unHighlightedBackgroundColor", newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_unHighlightedBackgroundColorKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
     }
 }

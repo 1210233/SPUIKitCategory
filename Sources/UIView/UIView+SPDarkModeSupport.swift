@@ -26,10 +26,10 @@ extension UIView {
     @IBInspectable public
     var darkModeBackgroundColor: UIColor? {
         get {
-            return objc_getAssociatedObject(self, "darkModeBackgroundColor") as? UIColor
+            return objc_getAssociatedObject(self, &sp_darkModeBackgroundColorKey) as? UIColor
         }
         set {
-            objc_setAssociatedObject(self, "darkModeBackgroundColor", newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_darkModeBackgroundColorKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
             
             if let value = newValue {
                 let normal = (self.backgroundColor ?? UIView.appearance().backgroundColor) ?? UIColor.white
@@ -87,13 +87,13 @@ extension UIView {
     public
     var originalBackgroundColor: UIColor? {
         get {
-            if let color = objc_getAssociatedObject(self, "originalBackgroundColor") as? UIColor {
+            if let color = objc_getAssociatedObject(self, &sp_originalBackgroundColorKey) as? UIColor {
                 return color
             }
             return self.backgroundColor
         }
         set {
-            objc_setAssociatedObject(self, "originalBackgroundColor", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_originalBackgroundColorKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -101,13 +101,13 @@ extension UIView {
     public
     var sameBackgroundColorWithSuperview: Bool {
         get {
-            if let value = objc_getAssociatedObject(self, "sameBackgroundColorWithSuperview") as? NSNumber {
+            if let value = objc_getAssociatedObject(self, &sp_sameBackgroundColorWithSuperviewKey) as? NSNumber {
                 return value.boolValue
             }
             return false
         }
         set {
-            objc_setAssociatedObject(self, "sameBackgroundColorWithSuperview", NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_sameBackgroundColorWithSuperviewKey, NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if newValue {
                 let origin = self.originalBackgroundColor

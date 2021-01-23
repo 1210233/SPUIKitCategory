@@ -39,7 +39,7 @@ extension UITextView {
     @IBInspectable public
     var autoScaleFont: Bool {
         get {
-            if let v = objc_getAssociatedObject(self, "autoScaleFont") as? NSNumber {
+            if let v = objc_getAssociatedObject(self, &sp_autoScaleFontKey) as? NSNumber {
                 return v.boolValue
             }
             return false
@@ -48,7 +48,7 @@ extension UITextView {
             if newValue == autoScaleFont {
                 return
             }
-            objc_setAssociatedObject(self, "autoScaleFont", NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_autoScaleFontKey, NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             var f: UIFont
             if newValue {

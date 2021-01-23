@@ -13,13 +13,13 @@ extension UIFont {
     public
     var autoscaled: Bool {
         get {
-            if let n = objc_getAssociatedObject(self, "autoscaled") as? NSNumber {
+            if let n = objc_getAssociatedObject(self, &sp_autoscaledKey) as? NSNumber {
                 return n.boolValue
             }
             return false
         }
         set {
-            objc_setAssociatedObject(self, "autoscaled", NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_autoscaledKey, NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

@@ -22,12 +22,33 @@ public let screenWidthScaleBase375: CGFloat = {
     return scale
 }()
 
-
+// Runtime Associated Keies
+var sp_darkModeTextColorKey                   = "sp_darkModeTextColorKey"
+var sp_darkModeBackgroundColorKey             = "sp_darkModeBackgroundColorKey"
+var sp_touchHighlightAbleKey                  = "sp_touchHighlightAbleKey"
+var sp_highlightedBackgroundColorKey          = "sp_highlightedBackgroundColorKey"
+var sp_unHighlightedBackgroundColorKey        = "sp_unHighlightedBackgroundColorKey"
+var sp_autoscaledKey                          = "sp_autoscaledKey"
+var sp_autoScaleFontKey                       = "sp_autoScaleFontKey"
+var sp_dataIn32KBKey                          = "sp_dataIn32KBKey"
+var sp_dataIn400KBKey                         = "sp_dataIn400KBKey"
+var sp_constraintsForOtherViewsKey            = "sp_constraintsForOtherViewsKey"
+var sp_storedConstraintsKey                   = "sp_storedConstraintsKey"
+var sp_widthConstraintKey                     = "sp_widthConstraintKey"
+var sp_heightConstraintKey                    = "sp_heightConstraintKey"
+var sp_topConstraintKey                       = "sp_topConstraintKey"
+var sp_leftConstraintKey                      = "sp_leftConstraintKey"
+var sp_rightConstraintKey                     = "sp_rightConstraintKey"
+var sp_bottomConstraintKey                    = "sp_bottomConstraintKey"
+var sp_centerXConstraintKey                   = "sp_centerXConstraintKey"
+var sp_centerYConstraintKey                   = "sp_centerYConstraintKey"
+var sp_originalBackgroundColorKey             = "sp_originalBackgroundColorKey"
+var sp_sameBackgroundColorWithSuperviewKey    = "sp_sameBackgroundColorWithSuperviewKey"
+var sp_validSizeKey                           = "sp_validSizeKey"
 
 
 // 放在AppDelegate中
 #if NEVER_COMPILE
-
 
 extension AppDelegate {
     

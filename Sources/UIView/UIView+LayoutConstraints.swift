@@ -15,11 +15,11 @@ extension UIView {
     private
     var constraintsForOtherViews: NSMutableDictionary {
         get {
-            if let dic = objc_getAssociatedObject(self, "constraintsForOtherViews") as? NSMutableDictionary {
+            if let dic = objc_getAssociatedObject(self, &sp_constraintsForOtherViewsKey) as? NSMutableDictionary {
                 return dic
             } else {
                 let dic = NSMutableDictionary()
-                objc_setAssociatedObject(self, "constraintsForOtherViews", dic, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &sp_constraintsForOtherViewsKey, dic, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 return dic
             }
         }
@@ -27,11 +27,11 @@ extension UIView {
     
     private
     var storedConstraintsKey: String {
-        if let key = objc_getAssociatedObject(self, "storedConstraintsKey") as? String {
+        if let key = objc_getAssociatedObject(self, &sp_storedConstraintsKey) as? String {
             return key
         } else {
             let key = String(format: "%p", self)
-            objc_setAssociatedObject(self, "storedConstraintsKey", key, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_storedConstraintsKey, key, .OBJC_ASSOCIATION_COPY_NONATOMIC)
             return key
         }
     }
@@ -312,10 +312,10 @@ extension UIView {
     @IBOutlet public
     var widthConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "widthConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_widthConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "widthConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_widthConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -351,10 +351,10 @@ extension UIView {
     @IBOutlet public
     var heightConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "heightConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_heightConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "heightConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_heightConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -390,10 +390,10 @@ extension UIView {
     @IBOutlet public
     var topConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "topConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_topConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "topConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_topConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -429,10 +429,10 @@ extension UIView {
     @IBOutlet public
     var leftConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "leftConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_leftConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "leftConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_leftConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -468,10 +468,10 @@ extension UIView {
     @IBOutlet public
     var rightConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "rightConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_rightConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "rightConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_rightConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -507,10 +507,10 @@ extension UIView {
     @IBOutlet public
     var bottomConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "bottomConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_bottomConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "bottomConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_bottomConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -546,10 +546,10 @@ extension UIView {
     @IBOutlet public
     var centerXConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "centerXConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_centerXConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "centerXConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_centerXConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -584,10 +584,10 @@ extension UIView {
     @IBOutlet public
     var centerYConstraint: NSLayoutConstraint? {
         get {
-            return objc_getAssociatedObject(self, "centerYConstraint") as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &sp_centerYConstraintKey) as? NSLayoutConstraint
         }
         set {
-            objc_setAssociatedObject(self, "centerYConstraint", newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_centerYConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     @IBInspectable public
@@ -636,7 +636,7 @@ extension NSLayoutConstraint {
     @IBInspectable public
     var autoScale: Bool {
         get {
-            if let v = objc_getAssociatedObject(self, "autoScale") as? NSNumber {
+            if let v = objc_getAssociatedObject(self, &sp_autoscaledKey) as? NSNumber {
                 return v.boolValue
             }
             return false
@@ -646,7 +646,7 @@ extension NSLayoutConstraint {
                 return
             }
             
-            objc_setAssociatedObject(self, "autoScale", NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_autoscaledKey, NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if self.constant == 0 {
                 return

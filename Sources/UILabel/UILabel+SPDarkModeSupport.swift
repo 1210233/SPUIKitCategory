@@ -9,6 +9,7 @@
 #if !os(macOS)
 import UIKit
 
+
 @objc
 extension UILabel {
     /// 需要交换的方法名
@@ -38,10 +39,10 @@ extension UILabel {
     @IBInspectable public
     var darkModeTextColor: UIColor? {
         get {
-            return objc_getAssociatedObject(self, "darkModeTextColor") as? UIColor
+            return objc_getAssociatedObject(self, &sp_darkModeTextColorKey) as? UIColor
         }
         set {
-            objc_setAssociatedObject(self, "darkModeTextColor", newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_darkModeTextColorKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
             
             let normal = self.textColor!
             var color: UIColor? = normal

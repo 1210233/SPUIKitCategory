@@ -14,11 +14,11 @@ extension UIImage {
     public
     var dataIn32KB: Data {
         get {
-            if let d = objc_getAssociatedObject(self, "dataIn32KB") as? Data {
+            if let d = objc_getAssociatedObject(self, &sp_dataIn32KBKey) as? Data {
                 return d
             }
             let d = self.dataIn(KB: 32)
-            objc_setAssociatedObject(self, "dataIn32KB", d, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_dataIn32KBKey, d, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return d
         }
     }
@@ -26,11 +26,11 @@ extension UIImage {
     public
     var dataIn400KB: Data {
         get {
-            if let d = objc_getAssociatedObject(self, "dataIn400KB") as? Data {
+            if let d = objc_getAssociatedObject(self, &sp_dataIn400KBKey) as? Data {
                 return d
             }
             let d = self.dataIn(KB: 400)
-            objc_setAssociatedObject(self, "dataIn400KB", d, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &sp_dataIn400KBKey, d, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return d
         }
     }
@@ -89,7 +89,7 @@ extension UIImage {
     public
     var validSize: CGSize {
         get {
-            if let num = objc_getAssociatedObject(self, "sp_validSize") as? NSNumber {
+            if let num = objc_getAssociatedObject(self, &sp_validSizeKey) as? NSNumber {
                 return num.cgSizeValue
             }else{
                 var width  = self.size.width;
@@ -105,7 +105,7 @@ extension UIImage {
                     }
                     size = CGSize(width: ceil(width), height: ceil(height));
                 }
-                objc_setAssociatedObject(self, "sp_validSize", NSNumber(cgSize: size), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &sp_validSizeKey, NSNumber(cgSize: size), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 return size
             }
         }
