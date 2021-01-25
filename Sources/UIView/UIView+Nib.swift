@@ -17,8 +17,9 @@ extension UIView {
      *  @param bundle  nib文件包（目录）[默认mainBundle]
      */
     public
-    class func loadNibNamed(nibName: String = String(describing: self), bundle: Bundle = Bundle.main) -> UINib {
-        return UINib(nibName: nibName, bundle: bundle)
+    class func loadNibNamed(_ nibName: String = "", bundle: Bundle = .main) -> UINib {
+        let name = nibName.isEmpty ? String(describing: self) : nibName
+        return UINib(nibName: name, bundle: bundle)
     }
 
     

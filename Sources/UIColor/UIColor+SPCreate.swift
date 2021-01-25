@@ -8,7 +8,6 @@
 
 #if !os(macOS)
 import UIKit
-import SPFoundationCategory
 
 extension UIColor {
     
@@ -69,11 +68,11 @@ extension UIColor {
             return
         }
         
-        if let index = cString.firstIndex(of: Character("0X")) {
-            cString = String(cString[index...])
+        if let range = cString.range(of: "0X") {
+            cString = String(cString[range.upperBound...])
         }
-        if let index = cString.firstIndex(of: Character("0x")) {
-            cString = String(cString[index...])
+        if let range = cString.range(of: "0x") {
+            cString = String(cString[range.upperBound...])
         }
         if let index = cString.firstIndex(of: Character("#")) {
             cString = String(cString[index...])
@@ -86,9 +85,9 @@ extension UIColor {
         var r: UInt32 = 0
         var g: UInt32 = 0
         var b: UInt32 = 0
-        Scanner(string: cString[0, 2]).scanHexInt32(&r)
-        Scanner(string: cString[2, 2]).scanHexInt32(&g)
-        Scanner(string: cString[4, 2]).scanHexInt32(&b)
+        Scanner(string: String(cString[cString.startIndex ..< cString.index(cString.startIndex, offsetBy: 2)])).scanHexInt32(&r)
+        Scanner(string: String(cString[cString.index(cString.startIndex, offsetBy: 2) ..< cString.index(cString.startIndex, offsetBy: 4)])).scanHexInt32(&g)
+        Scanner(string: String(cString[cString.index(cString.startIndex, offsetBy: 4) ..< cString.endIndex])).scanHexInt32(&b)
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: alpha)
     }
     

@@ -18,8 +18,9 @@ extension UIView {
     ///   - bundle: mainBundle
     /// - Returns: 实例
     public class
-    func loadFromNib(withName nibName: String = String(describing: self), owner: Any? = nil, bundle: Bundle = Bundle.main) -> UIView? {
-        if let arr = bundle.loadNibNamed(nibName, owner: owner, options: nil) {
+    func loadFromNib(nibName: String = "", owner: Any? = nil, bundle: Bundle = Bundle.main) -> UIView? {
+        let name = nibName.isEmpty ? String(describing: self) : nibName
+        if let arr = bundle.loadNibNamed(name, owner: owner, options: nil) {
             for obj in arr {
                 if let cls = obj as? NSObject, cls.isKind(of: self.classForCoder())  {
                     return (cls as! UIView)

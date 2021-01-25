@@ -11,10 +11,6 @@ import UIKit
 
 @objc
 extension UIViewController {
-    
-    public
-    static var exchangeMethodPrefix: String?
-    
     /// 需要交换的方法名
     var UIViewControllerXibCreationExchangeMethodNames: [String] {
         return ["init"]
@@ -24,10 +20,10 @@ extension UIViewController {
      *  从XIB文件（与类名相同的xib）初始化。
      */
     public
-    class func loadFromNib() -> UIViewController {
-        let name = String(describing: self)
+    class func loadFromNib(_ nib: String = "", bundle: Bundle?) -> UIViewController {
+        let name = nib.isEmpty ? String(describing: self) : nib
         if let _ = Bundle.main.path(forResource: name, ofType: "xib") {
-            return self.init(nibName: name, bundle: nil)
+            return self.init(nibName: name, bundle: bundle)
         }
         return self.init()
     }
@@ -47,6 +43,7 @@ extension UINavigationController {
     var UINavigationControllerXibCreationExchangeMethodNames: [String] {
         return ["initWithRootViewController:"]
     }
+    
     func sp_initWithRootViewController(_ vc: UIViewController) -> UINavigationController {
         let navi = self.sp_initWithRootViewController(vc)
         navi.modalPresentationStyle = .fullScreen
@@ -57,9 +54,6 @@ extension UINavigationController {
 
 @objc
 extension UIStoryboard {
-    
-    public
-    static var exchangeMethodPrefix: String?
     
     /// 需要交换的方法名
     var UIStoryboardXibCreationExchangeMethodNames: [String] {

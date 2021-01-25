@@ -17,39 +17,36 @@ import UIKit
  */
 extension UINib {
     convenience public
-    init(nibName: String) {
-        self.init(nibName: nibName, bundle: nil)
+    init(_ nibName: String, bundle: Bundle = .main) {
+        self.init(nibName: nibName, bundle: bundle)
     }
 }
 
 extension UIView {
     public
-    class func nibInMainBundle(nibName: String = "") -> UINib {
-        if nibName.isEmpty {
-            return UINib(nibName: String(describing: self))
-        }
-        return UINib(nibName: nibName)
+    class func nib(withName name: String = "", bundle: Bundle = .main) -> UINib {
+        return UINib(name.isEmpty ? String(describing: self) : name, bundle: bundle)
     }
 }
 
 extension UIViewController {
     public
-    class func nibInMainBundle(nibName: String = "") -> UINib {
-        if nibName.isEmpty {
-            return UINib(nibName: String(describing: self))
+    class func nib(withName name: String = "", bundle: Bundle = .main) -> UINib {
+        if name.isEmpty {
+            return UINib(String(describing: self), bundle: bundle)
         }
-        return UINib(nibName: nibName)
+        return UINib(name, bundle: bundle)
     }
 }
 
 extension String {
     
     public
-    func nibInMainBundle() -> UINib? {
+    func nibInBundle(_ bundle: Bundle = .main) -> UINib? {
         if self.isEmpty {
             return nil
         }
-        return Bundle.main.loadNibNamed(self, owner: nil, options: nil)?.first as? UINib
+        return bundle.loadNibNamed(self, owner: nil, options: nil)?.first as? UINib
     }
     
     public
@@ -57,7 +54,11 @@ extension String {
         if self.isEmpty {
             return nil
         }
-        return Bundle(identifier: bundleName)?.loadNibNamed(self, owner: nil, options: nil)?.first as? UINib
+        return bundleName.bundle?.loadNibNamed(self, owner: nil, options: nil)?.first as? UINib
+    }
+    
+    public var bundle: Bundle? {
+        return Bundle(identifier: self)
     }
 }
 #endif
