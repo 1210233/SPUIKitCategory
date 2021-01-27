@@ -22,6 +22,48 @@ public let screenWidthScaleBase375: CGFloat = {
     return scale
 }()
 
+
+extension BinaryInteger {
+    @inlinable public var scaleBase375: CGFloat {
+        return CGFloat(self) * screenWidthScaleBase375
+    }
+}
+extension BinaryFloatingPoint {
+    @inlinable public var scaleBase375: CGFloat {
+        return CGFloat(self) * screenWidthScaleBase375
+    }
+}
+
+extension CGSize {
+    @inlinable public var scaleBase375: Self {
+        return Self(width: self.width.scaleBase375,
+                    height: self.height.scaleBase375)
+    }
+}
+extension CGPoint {
+    @inlinable public var scaleBase375: Self {
+        return Self(x: self.x.scaleBase375,
+                    y: self.y.scaleBase375)
+    }
+}
+extension CGRect {
+    @inlinable public var scaleBase375: Self {
+        return Self(x: self.origin.x.scaleBase375,
+                    y: self.origin.y.scaleBase375,
+                    width: self.size.width.scaleBase375,
+                    height: self.size.height.scaleBase375)
+    }
+}
+extension UIEdgeInsets {
+    @inlinable public var scaleBase375: Self {
+        return Self(top: self.top.scaleBase375,
+                    left: self.left.scaleBase375,
+                    bottom: self.bottom.scaleBase375,
+                    right: self.right.scaleBase375)
+    }
+}
+
+
 // Runtime Associated Keies
 var sp_darkModeTextColorKey                   = "sp_darkModeTextColorKey"
 var sp_darkModeBackgroundColorKey             = "sp_darkModeBackgroundColorKey"
