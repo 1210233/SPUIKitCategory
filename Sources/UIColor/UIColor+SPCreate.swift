@@ -103,20 +103,26 @@ extension UIColor {
         self.init(red: r, green: g, blue: b, alpha: a)
     }
     
+    @available(*, unavailable, message: "init(mode: Modes) has been renamed to init(_: UIColor, _: UIColor = .lightGray)")
     public typealias Modes = (normal: UIColor, night: UIColor)
+    @available(*, unavailable, renamed: "init(_:_:)")
+    public convenience
+    init(mode: (normal: UIColor, night: UIColor)) {
+        self.init(white: 1, alpha: 1)
+    }
     /// color with normal mode an dark mode colors.
     /// - Parameter mode: (normal mode color, dark mode color)
     public convenience
-    init(mode: Modes) {
+    init(_ lightMode: UIColor, _ darkMode: UIColor = .lightGray) {
         if #available(iOS 13.0, *) {
             self.init { (colletion) -> UIColor in
                 if colletion.userInterfaceStyle == .dark {
-                    return mode.night
+                    return darkMode
                 }
-                return mode.normal
+                return lightMode
             }
         } else {
-            self.init(color: mode.normal)
+            self.init(color: lightMode)
         }
     }
 }
