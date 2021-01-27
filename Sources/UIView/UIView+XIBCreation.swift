@@ -18,12 +18,12 @@ extension UIView {
     ///   - bundle: mainBundle
     /// - Returns: 实例
     public class
-    func loadFromNib(nibName: String = "", owner: Any? = nil, bundle: Bundle = Bundle.main) -> UIView? {
+    func loadFromNib(_ nibName: String = "", owner: Any? = nil, bundle: Bundle = Bundle.main) -> Self? {
         let name = nibName.isEmpty ? String(describing: self) : nibName
         if let arr = bundle.loadNibNamed(name, owner: owner, options: nil) {
             for obj in arr {
-                if let cls = obj as? NSObject, cls.isKind(of: self.classForCoder())  {
-                    return (cls as! UIView)
+                if let cls = obj as? NSObject, cls is Self  {
+                    return cls as? Self
                 }
             }
         }

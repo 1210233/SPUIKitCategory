@@ -16,24 +16,56 @@ extension UIViewController {
         return ["init"]
     }
     
-    /**
-     *  从XIB文件（与类名相同的xib）初始化。
-     */
-    public
-    class func loadFromNib(_ nib: String = "", bundle: Bundle?) -> UIViewController {
-        let name = nib.isEmpty ? String(describing: self) : nib
-        if let _ = Bundle.main.path(forResource: name, ofType: "xib") {
-            return self.init(nibName: name, bundle: bundle)
-        }
-        return self.init()
-    }
-    
-    
     func sp_init() -> UIViewController {
         let vc = self.sp_init()
         vc.modalPresentationStyle = .fullScreen;
         vc.modalPresentationCapturesStatusBarAppearance = true
         return vc;
+    }
+}
+
+extension UIViewController {
+    
+    public enum NibLoadType {
+        case nib(_ name: String = "")
+        case storyboard(_ name: String = "", _ identifier: String = "")
+    }
+    
+    /**
+     *  从XIB文件（与类名相同的xib）初始化。
+     */
+    public
+    class func load(from type: NibLoadType, bundle: Bundle = .main) -> Self {
+        switch type {
+        case .nib(let nib):
+            let name = nib.isEmpty ? String(describing: self) : nib
+            if let _ = Bundle.main.path(forResource: name, ofType: "xib") {
+                return self.init(nibName: name, bundle: bundle)
+            }
+            break
+        case .storyboard(var name, var identy):
+            if name.isEmpty {
+                name = "Main"
+            }
+            if identy.isEmpty {
+                identy = self.storyboardIndentifier
+            }
+            if identy.isEmpty {
+                identy = String(describing: self)
+            }
+            if let vc = UIStoryboard(name: name, bundle: bundle).instantiateViewController(withIdentifier: identy) as? Self {
+                return vc
+            }
+        }
+        return self.init()
+    }
+    
+    open class var storyboardName: String {
+        return "Main"
+    }
+    
+    open class var storyboardIndentifier: String {
+        return String(describing: self)
     }
 }
 
@@ -65,6 +97,10 @@ extension UIStoryboard {
         vc?.modalPresentationStyle = .fullScreen
         vc?.modalPresentationCapturesStatusBarAppearance = true
         return vc
+    }
+    
+    public static var main: UIStoryboard {
+        return UIStoryboard(name: "Main", bundle: nil)
     }
 }
 #endif
