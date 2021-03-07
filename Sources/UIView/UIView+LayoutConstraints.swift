@@ -67,7 +67,7 @@ extension UIView {
      @return 所约束两个视图的约束对象。
      */
     public
-    func topEqualTo(view: UIView) -> NSLayoutConstraint {
+    func topEqualTo(view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
         var dic = self.constraintsDicFor(view: view)
         var cons = dic["top"] as? NSLayoutConstraint
         if cons == nil {
@@ -75,7 +75,7 @@ extension UIView {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
             
-            cons = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0)
+            cons = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: constant)
             self.superview?.addConstraint(cons!)
             dic["top"] = cons
             dic = view.constraintsDicFor(view: self)
@@ -85,7 +85,7 @@ extension UIView {
     }
     
     public
-    func leadingEqualTo(view: UIView) -> NSLayoutConstraint {
+    func leadingEqualTo(view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
         var dic = self.constraintsDicFor(view: view)
         var cons = dic["leading"] as? NSLayoutConstraint
         if cons == nil {
@@ -93,7 +93,7 @@ extension UIView {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
             
-            cons = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
+            cons = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: constant)
             self.superview?.addConstraint(cons!)
             dic["leading"] = cons
             dic = view.constraintsDicFor(view: self)
@@ -103,7 +103,7 @@ extension UIView {
     }
     
     public
-    func trailingEqualTo(view: UIView) -> NSLayoutConstraint {
+    func trailingEqualTo(view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
         var dic = self.constraintsDicFor(view: view)
         var cons = dic["trailing"] as? NSLayoutConstraint
         if cons == nil {
@@ -111,7 +111,7 @@ extension UIView {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
             
-            cons = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+            cons = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: constant)
             self.superview?.addConstraint(cons!)
             dic["trailing"] = cons
             dic = view.constraintsDicFor(view: self)
@@ -121,7 +121,7 @@ extension UIView {
     }
     
     public
-    func bottomEqualTo(view: UIView) -> NSLayoutConstraint {
+    func bottomEqualTo(view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
         var dic = self.constraintsDicFor(view: view)
         var cons = dic["bottom"] as? NSLayoutConstraint
         if cons == nil {
@@ -129,7 +129,7 @@ extension UIView {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
             
-            cons = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+            cons = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: constant)
             self.superview?.addConstraint(cons!)
             dic["bottom"] = cons
             dic = view.constraintsDicFor(view: self)
@@ -230,7 +230,7 @@ extension UIView {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
             
-            cons = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+            cons = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: constant)
             self.superview?.addConstraint(cons!)
             dic["left_spacing"] = cons
             dic = view.constraintsDicFor(view: self)
@@ -250,7 +250,7 @@ extension UIView {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
             
-            cons = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+            cons = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: constant)
             self.superview?.addConstraint(cons!)
             dic["right_spacing"] = cons
             dic = view.constraintsDicFor(view: self)
@@ -270,7 +270,7 @@ extension UIView {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
             
-            cons = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+            cons = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: constant)
             self.superview?.addConstraint(cons!)
             dic["top_spacing"] = cons
             dic = view.constraintsDicFor(view: self)
