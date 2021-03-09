@@ -492,7 +492,7 @@ extension UIView {
         if (self.translatesAutoresizingMaskIntoConstraints) {
             self.translatesAutoresizingMaskIntoConstraints = false
         }
-        let constraint = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: self.superview, attribute: .trailing, multiplier: 1, constant: right)
+        let constraint = NSLayoutConstraint(item: self.superview, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: right)
         
         self.superview?.addConstraint(constraint)
         self.rightConstraint = constraint
@@ -531,7 +531,7 @@ extension UIView {
         if (self.translatesAutoresizingMaskIntoConstraints) {
             self.translatesAutoresizingMaskIntoConstraints = false
         }
-        let constraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: self.superview, attribute: .bottom, multiplier: 1, constant: bottom)
+        let constraint = NSLayoutConstraint(item: self.superview, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: bottom)
         
         self.superview?.addConstraint(constraint)
         self.bottomConstraint = constraint
