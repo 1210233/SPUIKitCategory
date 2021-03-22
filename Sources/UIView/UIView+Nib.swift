@@ -25,7 +25,7 @@ extension UIView {
     
     ///mark --------- XIB INSPECTABLE -----------
     @IBInspectable public
-    var cornerRadius: CGFloat {
+    var corner_Radius: CGFloat {
         get {
             return self.layer.cornerRadius
         }
@@ -35,7 +35,7 @@ extension UIView {
     }
     
     @IBInspectable public
-    var shadowOpacity: Float {
+    var shadow_Opacity: Float {
         get {
             return self.layer.shadowOpacity
         }
@@ -55,7 +55,7 @@ extension UIView {
     }
     
     @IBInspectable public
-    var shadowColor: UIColor? {
+    var shadow_Color: UIColor? {
         get {
             if let color = self.layer.shadowColor {
                 return UIColor(cgColor: color)
@@ -69,7 +69,7 @@ extension UIView {
     }
     
     @IBInspectable public
-    var shadowOffset: CGSize {
+    var shadow_Offset: CGSize {
         get {
             return self.layer.shadowOffset
         }
@@ -79,7 +79,7 @@ extension UIView {
     }
 
     @IBInspectable public
-    var maskToBounds: Bool {
+    var masks_ToBounds: Bool {
         get {
             return self.layer.masksToBounds
         }
